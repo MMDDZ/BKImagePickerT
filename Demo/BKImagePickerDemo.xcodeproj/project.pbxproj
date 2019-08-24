@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1DBF7B832310E16700724024 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7B822310E16700724024 /* AppDelegate.m */; };
+		1DBF7B862310E16700724024 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7B852310E16700724024 /* ViewController.m */; };
+		1DBF7B8B2310E16700724024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DBF7B8A2310E16700724024 /* Assets.xcassets */; };
+		1DBF7B912310E16700724024 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7B902310E16700724024 /* main.m */; };
+		1DBF7BAD2310E42400724024 /* BKImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBF7BAC2310E42400724024 /* BKImagePicker.framework */; };
+		1DBF7BAE2310E42400724024 /* BKImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBF7BAC2310E42400724024 /* BKImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73BF1C330365D4BA1707B3D6 /* Pods_BKImagePickerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8A6E8F9FB750B612D432FA /* Pods_BKImagePickerDemo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1DBF7BAF2310E42500724024 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1DBF7BAE2310E42400724024 /* BKImagePicker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1DBF7B7E2310E16600724024 /* BKImagePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BKImagePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DBF7B812310E16700724024 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1DBF7B822310E16700724024 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1DBF7B842310E16700724024 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1DBF7B852310E16700724024 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1DBF7B8A2310E16700724024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DBF7B8F2310E16700724024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DBF7B902310E16700724024 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1DBF7BAC2310E42400724024 /* BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6919660B33317636430B6308 /* Pods-BKImagePickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePickerDemo.debug.xcconfig"; path = "Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C59EE0F1D81079FF10237815 /* Pods-BKImagePickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePickerDemo.release.xcconfig"; path = "Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DA8A6E8F9FB750B612D432FA /* Pods_BKImagePickerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKImagePickerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DBF7B7B2310E16600724024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				73BF1C330365D4BA1707B3D6 /* Pods_BKImagePickerDemo.framework in Frameworks */,
+				1DBF7BAD2310E42400724024 /* BKImagePicker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1DBF7B752310E16600724024 = {
+			isa = PBXGroup;
+			children = (
+				1DBF7BAC2310E42400724024 /* BKImagePicker.framework */,
+				1DBF7B802310E16600724024 /* BKImagePickerDemo */,
+				1DBF7B7F2310E16600724024 /* Products */,
+				949CA0A23931CBE822A79499 /* Pods */,
+				EE4A9A4A0C956AD73081586B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		1DBF7B7F2310E16600724024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DBF7B7E2310E16600724024 /* BKImagePickerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DBF7B802310E16600724024 /* BKImagePickerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1DBF7B812310E16700724024 /* AppDelegate.h */,
+				1DBF7B822310E16700724024 /* AppDelegate.m */,
+				1DBF7B842310E16700724024 /* ViewController.h */,
+				1DBF7B852310E16700724024 /* ViewController.m */,
+				1DBF7B8A2310E16700724024 /* Assets.xcassets */,
+				1DBF7B8F2310E16700724024 /* Info.plist */,
+				1DBF7B902310E16700724024 /* main.m */,
+			);
+			path = BKImagePickerDemo;
+			sourceTree = "<group>";
+		};
+		949CA0A23931CBE822A79499 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6919660B33317636430B6308 /* Pods-BKImagePickerDemo.debug.xcconfig */,
+				C59EE0F1D81079FF10237815 /* Pods-BKImagePickerDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		EE4A9A4A0C956AD73081586B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA8A6E8F9FB750B612D432FA /* Pods_BKImagePickerDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DBF7B7D2310E16600724024 /* BKImagePickerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DBF7B942310E16700724024 /* Build configuration list for PBXNativeTarget "BKImagePickerDemo" */;
+			buildPhases = (
+				DED07F49785A540D11303F00 /* [CP] Check Pods Manifest.lock */,
+				1DBF7B7A2310E16600724024 /* Sources */,
+				1DBF7B7B2310E16600724024 /* Frameworks */,
+				1DBF7B7C2310E16600724024 /* Resources */,
+				5C9EF5FA9A7665B066D169FA /* [CP] Embed Pods Frameworks */,
+				1DBF7BAF2310E42500724024 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BKImagePickerDemo;
+			productName = BKImagePickerDemo;
+			productReference = 1DBF7B7E2310E16600724024 /* BKImagePickerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DBF7B762310E16600724024 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = BIKE;
+				TargetAttributes = {
+					1DBF7B7D2310E16600724024 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 1DBF7B792310E16600724024 /* Build configuration list for PBXProject "BKImagePickerDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DBF7B752310E16600724024;
+			productRefGroup = 1DBF7B7F2310E16600724024 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DBF7B7D2310E16600724024 /* BKImagePickerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DBF7B7C2310E16600724024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DBF7B8B2310E16700724024 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5C9EF5FA9A7665B066D169FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DED07F49785A540D11303F00 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BKImagePickerDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DBF7B7A2310E16600724024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DBF7B862310E16700724024 /* ViewController.m in Sources */,
+				1DBF7B912310E16700724024 /* main.m in Sources */,
+				1DBF7B832310E16700724024 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DBF7B922310E16700724024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DBF7B932310E16700724024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DBF7B952310E16700724024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6919660B33317636430B6308 /* Pods-BKImagePickerDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S864B3K;
+				INFOPLIST_FILE = BKImagePickerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BIKE.BKImagePickerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1DBF7B962310E16700724024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C59EE0F1D81079FF10237815 /* Pods-BKImagePickerDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 779S864B3K;
+				INFOPLIST_FILE = BKImagePickerDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = BIKE.BKImagePickerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DBF7B792310E16600724024 /* Build configuration list for PBXProject "BKImagePickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DBF7B922310E16700724024 /* Debug */,
+				1DBF7B932310E16700724024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DBF7B942310E16700724024 /* Build configuration list for PBXNativeTarget "BKImagePickerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DBF7B952310E16700724024 /* Debug */,
+				1DBF7B962310E16700724024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DBF7B762310E16600724024 /* Project object */;
+}
