@@ -7,13 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Photos/Photos.h>
 
-//! Project version number for BKImagePicker.
 FOUNDATION_EXPORT double BKImagePickerVersionNumber;
-
-//! Project version string for BKImagePicker.
 FOUNDATION_EXPORT const unsigned char BKImagePickerVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <BKImagePicker/PublicHeader.h>
+NS_ASSUME_NONNULL_BEGIN
 
+@interface BKImagePicker : NSObject
 
+#pragma mark - 单例
+
+/**
+ 单例
+ 
+ @return BKImagePicker
+ */
++(instancetype)sharedManager;
+
+@end
+
+NS_ASSUME_NONNULL_END
