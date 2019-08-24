@@ -8,12 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
-
-typedef NS_ENUM(NSInteger,BKIPSelectType) {
-    BKIPSelectTypeImage = 0,
-    BKIPSelectTypeGIF,
-    BKIPSelectTypeVideo,
-};
+#import "BKImagePickerPEnum.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

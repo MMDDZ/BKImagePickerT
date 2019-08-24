@@ -9,6 +9,8 @@
 #ifndef BKImagePickerHeader_h
 #define BKImagePickerHeader_h
 
+#import <Photos/Photos.h>
+
 #import "BKImagePickerInline.h"
 #import "BKImagePickerMacro.h"
 #import "BKImagePickerConstant.h"

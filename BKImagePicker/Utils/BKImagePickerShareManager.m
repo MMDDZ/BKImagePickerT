@@ -191,9 +191,6 @@ static BKImagePickerShareManager * sharedManager = nil;
 
 /**
  获取对应缩略图
- 
- @param asset 相片
- @param complete 完成方法
  */
 -(void)getThumbImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * thumbImage))complete
 {
@@ -215,9 +212,6 @@ static BKImagePickerShareManager * sharedManager = nil;
 
 /**
  获取对应原图
- 
- @param asset 相片
- @param complete 完成方法
  */
 -(void)getOriginalImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * originalImage))complete
 {
@@ -252,10 +246,6 @@ static BKImagePickerShareManager * sharedManager = nil;
 
 /**
  获取对应原图data
- 
- @param asset 相片
- @param progressHandler 下载进度返回
- @param complete 完成方法
  */
 -(void)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete
 {
@@ -280,6 +270,34 @@ static BKImagePickerShareManager * sharedManager = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             if (complete) {
                 complete(imageData, url, imageRequestID);
+            }
+        });
+    }];
+}
+
+/**
+ 获取视频
+ */
+-(void)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete
+{
+    PHVideoRequestOptions * options = [[PHVideoRequestOptions alloc]init];
+    options.version = PHVideoRequestOptionsVersionOriginal;
+    options.deliveryMode = PHVideoRequestOptionsDeliveryModeAutomatic;
+    options.networkAccessAllowed = YES;
+    [options setProgressHandler:^(double progress, NSError * _Nullable error, BOOL * _Nonnull stop, NSDictionary * _Nullable info) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            PHImageRequestID imageRequestID = [info[PHImageResultRequestIDKey] intValue];
+            if (progressHandler) {
+                progressHandler(progress,error,imageRequestID);
+            }
+        });
+    }];
+    
+    __block PHImageRequestID imageRequestID = [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+        AVPlayerItem * playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (complete) {
+                complete(playerItem, imageRequestID);
             }
         });
     }];

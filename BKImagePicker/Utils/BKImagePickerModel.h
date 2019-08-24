@@ -9,17 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "BKImagePickerImageModel.h"
-
-typedef NS_ENUM(NSInteger,BKIPDisplayType) {
-    BKIPDisplayTypeDefault = 0,
-    BKIPDisplayTypeImageAndGif,
-    BKIPDisplayTypeImageAndVideo,
-    BKIPDisplayTypeImage
-};
+#import "BKImagePickerPEnum.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BKImagePickerModel : NSObject
+
+#pragma mark - 属性
 
 /**
  是否有原图按钮
@@ -42,9 +38,16 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,assign) BKIPDisplayType displayType;
 /**
- 预定裁剪大小宽高比
+ 预定裁剪大小宽高比 0代表不裁剪
  */
-@property (nonatomic,assign) CGFloat clipWHRatio;
+@property (nonatomic,assign) CGFloat aspectRatio;
+
+#pragma mark - 方法
+
+/**
+ 初始化属性
+ */
+-(void)resetProperty;
 
 @end
 

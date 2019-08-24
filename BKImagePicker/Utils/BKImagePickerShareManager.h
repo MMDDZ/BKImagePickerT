@@ -70,6 +70,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete;
 
+/**
+ 获取视频
+ 
+ @param asset 相片
+ @param progressHandler 下载进度返回
+ @param complete 完成方法
+ */
+-(void)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete;
+
 #pragma mark - 压缩图片
 
 /**
