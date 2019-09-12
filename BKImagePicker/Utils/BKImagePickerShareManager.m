@@ -201,7 +201,6 @@ static BKImagePickerShareManager * sharedManager = nil;
     thumbImageOptions.networkAccessAllowed = YES;
     
     [self.cachingImageManager requestImageForAsset:asset targetSize:CGSizeMake(BKIP_SCREENW/2.0f, BKIP_SCREENW/2.0f) contentMode:PHImageContentModeAspectFill options:thumbImageOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             if (complete) {
                 complete(result);

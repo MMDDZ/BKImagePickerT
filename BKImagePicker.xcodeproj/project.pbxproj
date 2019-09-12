@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D34B06023137274009524D6 /* UINavigationController+BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D34B05E23137274009524D6 /* UINavigationController+BKImagePicker.h */; };
+		1D34B06123137274009524D6 /* UINavigationController+BKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B05F23137274009524D6 /* UINavigationController+BKImagePicker.m */; };
+		1D34B06423137A43009524D6 /* UIViewController+BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D34B06223137A43009524D6 /* UIViewController+BKImagePicker.h */; };
+		1D34B06523137A43009524D6 /* UIViewController+BKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B06323137A43009524D6 /* UIViewController+BKImagePicker.m */; };
+		1D34B06823137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D34B06623137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h */; };
+		1D34B06923137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B06723137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m */; };
+		1D34B06C23137B16009524D6 /* BKIPTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D34B06A23137B16009524D6 /* BKIPTransitionAnimater.h */; };
+		1D34B06D23137B16009524D6 /* BKIPTransitionAnimater.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B06B23137B16009524D6 /* BKIPTransitionAnimater.m */; };
 		1DBF7BBC2311024A00724024 /* BKImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1DBF7BBB2311024A00724024 /* BKImagePicker.bundle */; };
 		1DBF7BC3231102B200724024 /* NSObject+BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BC1231102B200724024 /* NSObject+BKImagePicker.h */; };
 		1DBF7BC4231102B200724024 /* NSObject+BKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BC2231102B200724024 /* NSObject+BKImagePicker.m */; };
@@ -29,7 +37,7 @@
 		1DBF7BF623110E9300724024 /* BKImagePickerNavButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BF223110E9300724024 /* BKImagePickerNavButton.h */; };
 		1DBF7BF723110E9300724024 /* BKImagePickerBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BF323110E9300724024 /* BKImagePickerBaseViewController.m */; };
 		1DBF7BF823110E9300724024 /* BKImagePickerNavButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BF423110E9300724024 /* BKImagePickerNavButton.m */; };
-		1DBF7BFB23111F4400724024 /* BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BF923111F4400724024 /* BKImagePicker.h */; };
+		1DBF7BFB23111F4400724024 /* BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BF923111F4400724024 /* BKImagePicker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DBF7BFC23111F4400724024 /* BKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BFA23111F4400724024 /* BKImagePicker.m */; };
 		1DBF7BFF23111F8F00724024 /* BKImagePickerNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BFD23111F8F00724024 /* BKImagePickerNavigationController.h */; };
 		1DBF7C0023111F8F00724024 /* BKImagePickerNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BFE23111F8F00724024 /* BKImagePickerNavigationController.m */; };
@@ -39,16 +47,28 @@
 		1DBF7C0C231122CF00724024 /* BKImagePickerModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C0A231122CF00724024 /* BKImagePickerModel.h */; };
 		1DBF7C0F2311243900724024 /* BKImagePickerImageModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C0D2311243900724024 /* BKImagePickerImageModel.h */; };
 		1DBF7C102311243900724024 /* BKImagePickerImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7C0E2311243900724024 /* BKImagePickerImageModel.m */; };
-		1DBF7C2B2311321300724024 /* BKImagePickerPEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C2A2311321300724024 /* BKImagePickerPEnum.h */; };
+		1DBF7C2B2311321300724024 /* BKImagePickerPEnum.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C2A2311321300724024 /* BKImagePickerPEnum.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1DBF7C2E23113A7900724024 /* BKIPImageAlbumListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C2C23113A7900724024 /* BKIPImageAlbumListViewController.h */; };
 		1DBF7C2F23113A7900724024 /* BKIPImageAlbumListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7C2D23113A7900724024 /* BKIPImageAlbumListViewController.m */; };
 		1DBF7C3223113A9400724024 /* BKIPImagePickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7C3023113A9400724024 /* BKIPImagePickerViewController.h */; };
 		1DBF7C3323113A9400724024 /* BKIPImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7C3123113A9400724024 /* BKIPImagePickerViewController.m */; };
+		1DC129002329E4A800EA5E31 /* BKIPImageAlbumListModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC128FE2329E4A800EA5E31 /* BKIPImageAlbumListModel.h */; };
+		1DC129012329E4A800EA5E31 /* BKIPImageAlbumListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC128FF2329E4A800EA5E31 /* BKIPImageAlbumListModel.m */; };
+		1DC129042329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC129022329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h */; };
+		1DC129052329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC129032329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m */; };
 		BFC8576556C65AA5F5847186 /* Pods_BKImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5D691A6B0B172E2E6A9405 /* Pods_BKImagePicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1060B4CE2740444DFC8FDB10 /* Pods-BKImagePicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePicker.release.xcconfig"; path = "Target Support Files/Pods-BKImagePicker/Pods-BKImagePicker.release.xcconfig"; sourceTree = "<group>"; };
+		1D34B05E23137274009524D6 /* UINavigationController+BKImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+BKImagePicker.h"; sourceTree = "<group>"; };
+		1D34B05F23137274009524D6 /* UINavigationController+BKImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+BKImagePicker.m"; sourceTree = "<group>"; };
+		1D34B06223137A43009524D6 /* UIViewController+BKImagePicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BKImagePicker.h"; sourceTree = "<group>"; };
+		1D34B06323137A43009524D6 /* UIViewController+BKImagePicker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BKImagePicker.m"; sourceTree = "<group>"; };
+		1D34B06623137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		1D34B06723137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
+		1D34B06A23137B16009524D6 /* BKIPTransitionAnimater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPTransitionAnimater.h; sourceTree = "<group>"; };
+		1D34B06B23137B16009524D6 /* BKIPTransitionAnimater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPTransitionAnimater.m; sourceTree = "<group>"; };
 		1DBF7BA12310E1D900724024 /* BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBF7BB5231101A200724024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBF7BBB2311024A00724024 /* BKImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BKImagePicker.bundle; sourceTree = "<group>"; };
@@ -88,6 +108,10 @@
 		1DBF7C2D23113A7900724024 /* BKIPImageAlbumListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImageAlbumListViewController.m; sourceTree = "<group>"; };
 		1DBF7C3023113A9400724024 /* BKIPImagePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImagePickerViewController.h; sourceTree = "<group>"; };
 		1DBF7C3123113A9400724024 /* BKIPImagePickerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImagePickerViewController.m; sourceTree = "<group>"; };
+		1DC128FE2329E4A800EA5E31 /* BKIPImageAlbumListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImageAlbumListModel.h; sourceTree = "<group>"; };
+		1DC128FF2329E4A800EA5E31 /* BKIPImageAlbumListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImageAlbumListModel.m; sourceTree = "<group>"; };
+		1DC129022329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImageAlbumListTableViewCell.h; sourceTree = "<group>"; };
+		1DC129032329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImageAlbumListTableViewCell.m; sourceTree = "<group>"; };
 		3D5D691A6B0B172E2E6A9405 /* Pods_BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1378E0C3E259A61E27739D /* Pods-BKImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePicker.debug.xcconfig"; path = "Target Support Files/Pods-BKImagePicker/Pods-BKImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +241,14 @@
 			children = (
 				1DBF7BFD23111F8F00724024 /* BKImagePickerNavigationController.h */,
 				1DBF7BFE23111F8F00724024 /* BKImagePickerNavigationController.m */,
+				1D34B05E23137274009524D6 /* UINavigationController+BKImagePicker.h */,
+				1D34B05F23137274009524D6 /* UINavigationController+BKImagePicker.m */,
+				1D34B06223137A43009524D6 /* UIViewController+BKImagePicker.h */,
+				1D34B06323137A43009524D6 /* UIViewController+BKImagePicker.m */,
+				1D34B06623137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h */,
+				1D34B06723137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m */,
+				1D34B06A23137B16009524D6 /* BKIPTransitionAnimater.h */,
+				1D34B06B23137B16009524D6 /* BKIPTransitionAnimater.m */,
 			);
 			path = NavigationController;
 			sourceTree = "<group>";
@@ -317,6 +349,8 @@
 		1DBF7C1C231130E600724024 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1DC128FE2329E4A800EA5E31 /* BKIPImageAlbumListModel.h */,
+				1DC128FF2329E4A800EA5E31 /* BKIPImageAlbumListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +358,8 @@
 		1DBF7C1D231130E600724024 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1DC129022329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h */,
+				1DC129032329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -383,11 +419,17 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DBF7BFB23111F4400724024 /* BKImagePicker.h in Headers */,
+				1DC129002329E4A800EA5E31 /* BKIPImageAlbumListModel.h in Headers */,
+				1DBF7C2B2311321300724024 /* BKImagePickerPEnum.h in Headers */,
+				1D34B06C23137B16009524D6 /* BKIPTransitionAnimater.h in Headers */,
+				1D34B06823137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h in Headers */,
 				1DBF7BDA2311060100724024 /* BKImagePickerInline.h in Headers */,
 				1DBF7BD32311035800724024 /* UIImage+BKImagePicker.h in Headers */,
 				1DBF7BD72311036800724024 /* UIView+BKImagePicker.h in Headers */,
 				1DBF7BF623110E9300724024 /* BKImagePickerNavButton.h in Headers */,
 				1DBF7BCB231102E300724024 /* NSAttributedString+BKImagePicker.h in Headers */,
+				1DC129042329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h in Headers */,
 				1DBF7BC7231102CD00724024 /* NSString+BKImagePicker.h in Headers */,
 				1DBF7BCF2311031400724024 /* UIBezierPath+BKImagePicker.h in Headers */,
 				1DBF7C3223113A9400724024 /* BKIPImagePickerViewController.h in Headers */,
@@ -396,11 +438,11 @@
 				1DBF7C0C231122CF00724024 /* BKImagePickerModel.h in Headers */,
 				1DBF7BFF23111F8F00724024 /* BKImagePickerNavigationController.h in Headers */,
 				1DBF7BF523110E9300724024 /* BKImagePickerBaseViewController.h in Headers */,
+				1D34B06023137274009524D6 /* UINavigationController+BKImagePicker.h in Headers */,
+				1D34B06423137A43009524D6 /* UIViewController+BKImagePicker.h in Headers */,
 				1DBF7C2E23113A7900724024 /* BKIPImageAlbumListViewController.h in Headers */,
 				1DBF7C0F2311243900724024 /* BKImagePickerImageModel.h in Headers */,
-				1DBF7BFB23111F4400724024 /* BKImagePicker.h in Headers */,
 				1DBF7BC3231102B200724024 /* NSObject+BKImagePicker.h in Headers */,
-				1DBF7C2B2311321300724024 /* BKImagePickerPEnum.h in Headers */,
 				1DBF7C072311229B00724024 /* BKImagePickerShareManager.h in Headers */,
 				1DBF7BDC2311061700724024 /* BKImagePickerMacro.h in Headers */,
 			);
@@ -506,10 +548,16 @@
 				1DBF7C102311243900724024 /* BKImagePickerImageModel.m in Sources */,
 				1DBF7BC4231102B200724024 /* NSObject+BKImagePicker.m in Sources */,
 				1DBF7C0B231122CF00724024 /* BKImagePickerModel.m in Sources */,
+				1DC129012329E4A800EA5E31 /* BKIPImageAlbumListModel.m in Sources */,
+				1D34B06523137A43009524D6 /* UIViewController+BKImagePicker.m in Sources */,
 				1DBF7BE02311063000724024 /* BKImagePickerConstant.m in Sources */,
 				1DBF7C0023111F8F00724024 /* BKImagePickerNavigationController.m in Sources */,
+				1D34B06D23137B16009524D6 /* BKIPTransitionAnimater.m in Sources */,
+				1D34B06123137274009524D6 /* UINavigationController+BKImagePicker.m in Sources */,
 				1DBF7BF823110E9300724024 /* BKImagePickerNavButton.m in Sources */,
+				1DC129052329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m in Sources */,
 				1DBF7BCC231102E300724024 /* NSAttributedString+BKImagePicker.m in Sources */,
+				1D34B06923137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m in Sources */,
 				1DBF7BD82311036800724024 /* UIView+BKImagePicker.m in Sources */,
 				1DBF7BFC23111F4400724024 /* BKImagePicker.m in Sources */,
 				1DBF7BD02311031400724024 /* UIBezierPath+BKImagePicker.m in Sources */,

@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  检测是否允许调用相册
  */
--(void)checkAllowVisitPhotoAlbumHandler:(void (^)(BOOL flag))handler alertHandler:(void (^)(void))alertHandler;
+-(void)checkAllowVisitPhotoAlbumHandler:(nullable void (^)(BOOL flag))handler alertHandler:(nullable void (^)(void))alertHandler;
 
 #pragma mark - 获取图片
 

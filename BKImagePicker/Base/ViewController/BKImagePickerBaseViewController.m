@@ -100,7 +100,7 @@
 -(UIView*)topNavView
 {
     if (!_topNavView) {
-        _topNavView = [[UIView alloc] init];
+        _topNavView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bk_width, self.topNavViewHeight)];
         _topNavView.backgroundColor = BKIP_NAV_BG_COLOR;
     }
     return _topNavView;
@@ -109,7 +109,7 @@
 -(UILabel*)titleLab
 {
     if (!_titleLab) {
-        _titleLab = [[UILabel alloc] init];
+        _titleLab = [[UILabel alloc] initWithFrame:CGRectMake(0, self.topNavView.bk_height - BKIP_get_system_nav_ui_height(), self.topNavView.bk_width, BKIP_get_system_nav_ui_height())];
         _titleLab.textColor = BKIP_NAV_TITLE_COLOR;
         _titleLab.font = BKIP_regular_font(18);
         _titleLab.textAlignment = NSTextAlignmentCenter;
@@ -121,7 +121,7 @@
 -(UIImageView*)topLine
 {
     if (!_topLine) {
-        _topLine = [[UIImageView alloc] init];
+        _topLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.topNavView.bk_height - BKIP_ONE_PIXEL, self.topNavView.bk_width, BKIP_ONE_PIXEL)];
         _topLine.backgroundColor = BKIP_LINE_COLOR;
     }
     return _topLine;
@@ -196,7 +196,7 @@
 -(UIView*)bottomNavView
 {
     if (!_bottomNavView) {
-        _bottomNavView = [[UIView alloc] init];
+        _bottomNavView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.bk_height - self.bottomNavViewHeight, self.view.bk_width, self.bottomNavViewHeight)];
         _bottomNavView.backgroundColor = BKIP_NAV_BG_COLOR;
     }
     return _bottomNavView;
@@ -205,7 +205,7 @@
 -(UIImageView*)bottomLine
 {
     if (!_bottomLine) {
-        _bottomLine = [[UIImageView alloc] init];
+        _bottomLine = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.bottomNavView.bk_width, BKIP_ONE_PIXEL)];
         _bottomLine.backgroundColor = BKIP_LINE_COLOR;
     }
     return _bottomLine;

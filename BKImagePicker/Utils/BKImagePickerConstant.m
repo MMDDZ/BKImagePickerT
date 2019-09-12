@@ -10,6 +10,8 @@
 
 #pragma mark - 通知
 
+NSString * const kBKIPFinishSelectImageNotification = @"kBKIPFinishSelectImageNotification";//选择完成通知
+
 #pragma mark - 常量
 
 float const kBKIPTopNavLeftRightOffset = 6;

@@ -11,6 +11,7 @@
 
 #pragma mark - 通知
 
+UIKIT_EXTERN NSString * const kBKIPFinishSelectImageNotification;//选择完成通知
 
 #pragma mark - 常量
 
