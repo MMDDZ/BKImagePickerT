@@ -27,9 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,assign) BKIPSelectType photoType;
 /**
- 缩略图
+ 封面图
  */
-@property (nonatomic,strong) UIImage * thumbImage;
+@property (nonatomic,strong) UIImage * coverImage;
 /**
  缩略图data
  */

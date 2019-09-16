@@ -145,7 +145,7 @@
 
 -(void)addLeftBackNavBtn
 {
-    BKImagePickerNavButton * backBtn = [[BKImagePickerNavButton alloc] initWithImage:[UIImage imageWithImageName:@"DS_nav_back"]];
+    BKImagePickerNavButton * backBtn = [[BKImagePickerNavButton alloc] initWithImage:[UIImage imageWithImageName:@"nav_back"]];
     [backBtn addTarget:self action:@selector(leftNavBtnAction)];
     self.leftNavBtns = @[backBtn];
 }

@@ -32,7 +32,7 @@
     return _imageClassArray;
 }
 
--(void)getAllImageClassData
+-(void)getAllAssetCollection
 {
     //系统的相簿
     PHFetchResult * smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
@@ -126,7 +126,7 @@
 {
     self = [super init];
     if (self) {
-        [self getAllImageClassData];
+        [self getAllAssetCollection];
     }
     return self;
 }

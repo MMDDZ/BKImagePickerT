@@ -38,8 +38,6 @@
 #define BKIP_ImagePicker_ImageNumberTitleColor [UIColor colorWithWhite:0.5 alpha:1]
 //相片列表 视频时长颜色
 #define BKIP_ImagePicker_VideoTimeTitleColor [UIColor whiteColor]
-//相片列表 GIF、视频标注阴影颜色
-#define BKIP_ImagePicker_VideoShadowColor [UIColor blackColor]
 //相片列表 GIF、视频标注颜色
 #define BKIP_ImagePicker_VideoMarkColor [UIColor whiteColor]
 //相片列表 (未选中)选中图片按钮背景颜色

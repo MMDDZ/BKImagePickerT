@@ -77,13 +77,18 @@ NSString * const kBKIPImageAlbumListTableViewCellID = @"BKIPImageAlbumListTableV
     
     if (_model.coverImage) {
         self.displayImageView.image = model.coverImage;
-    }else {
+    }else if (_model.coverAsset) {
         [[BKImagePickerShareManager sharedManager] getThumbImageWithAsset:_model.coverAsset complete:^(UIImage *thumbImage) {
+            if (!thumbImage) {
+                thumbImage = [UIImage imageWithImageName:@"default_image"];
+            }
             self.displayImageView.image = thumbImage;
             if (self.getThumbCoverImageCallBack) {
                 self.getThumbCoverImageCallBack(thumbImage, self.indexPath);
             }
         }];
+    }else {
+        self.displayImageView.image = [UIImage imageWithImageName:@"default_image"];
     }
     self.titleLab.text = model.albumName;
     [self.titleLab sizeToFit];

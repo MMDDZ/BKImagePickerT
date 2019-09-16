@@ -15,6 +15,7 @@
 #import "BKImagePickerMacro.h"
 #import "BKImagePickerConstant.h"
 #import "BKImagePickerShareManager.h"
+#import "BKImagePickerGradientView.h"
 
 #import "NSObject+BKImagePicker.h"
 #import "NSString+BKImagePicker.h"
