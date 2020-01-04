@@ -13,6 +13,7 @@
 		1DBF7B912310E16700724024 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7B902310E16700724024 /* main.m */; };
 		1DBF7BAD2310E42400724024 /* BKImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBF7BAC2310E42400724024 /* BKImagePicker.framework */; };
 		1DBF7BAE2310E42400724024 /* BKImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBF7BAC2310E42400724024 /* BKImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1DE8835B23B9F2360043A53B /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DE8835A23B9F2360043A53B /* Launch Screen.storyboard */; };
 		73BF1C330365D4BA1707B3D6 /* Pods_BKImagePickerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8A6E8F9FB750B612D432FA /* Pods_BKImagePickerDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		1DBF7B8F2310E16700724024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBF7B902310E16700724024 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1DBF7BAC2310E42400724024 /* BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DE8835A23B9F2360043A53B /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6919660B33317636430B6308 /* Pods-BKImagePickerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePickerDemo.debug.xcconfig"; path = "Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C59EE0F1D81079FF10237815 /* Pods-BKImagePickerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePickerDemo.release.xcconfig"; path = "Target Support Files/Pods-BKImagePickerDemo/Pods-BKImagePickerDemo.release.xcconfig"; sourceTree = "<group>"; };
 		DA8A6E8F9FB750B612D432FA /* Pods_BKImagePickerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKImagePickerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				1DBF7B822310E16700724024 /* AppDelegate.m */,
 				1DBF7B842310E16700724024 /* ViewController.h */,
 				1DBF7B852310E16700724024 /* ViewController.m */,
+				1DE8835A23B9F2360043A53B /* Launch Screen.storyboard */,
 				1DBF7B8A2310E16700724024 /* Assets.xcassets */,
 				1DBF7B8F2310E16700724024 /* Info.plist */,
 				1DBF7B902310E16700724024 /* main.m */,
@@ -138,7 +141,7 @@
 		1DBF7B762310E16600724024 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = BIKE;
 				TargetAttributes = {
 					1DBF7B7D2310E16600724024 = {
@@ -169,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DE8835B23B9F2360043A53B /* Launch Screen.storyboard in Resources */,
 				1DBF7B8B2310E16700724024 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,11 +352,11 @@
 			baseConfigurationReference = 6919660B33317636430B6308 /* Pods-BKImagePickerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 779S864B3K;
 				INFOPLIST_FILE = BKImagePickerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,11 +372,11 @@
 			baseConfigurationReference = C59EE0F1D81079FF10237815 /* Pods-BKImagePickerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 779S864B3K;
 				INFOPLIST_FILE = BKImagePickerDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

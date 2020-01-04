@@ -157,7 +157,7 @@
     self.leftNavBtns = @[];
     
     BKImagePickerNavButton * rightNavBtn = [[BKImagePickerNavButton alloc] initWithTitle:@"取消" font:[UIFont systemFontOfSize:16] titleColor:BKIP_NAV_BTN_TITLE_COLOR];
-    [rightNavBtn addTarget:self action:@selector(rightNavBtnClick)];
+    [rightNavBtn addTarget:self action:@selector(rightNavBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.rightNavBtns = @[rightNavBtn];
 }
 

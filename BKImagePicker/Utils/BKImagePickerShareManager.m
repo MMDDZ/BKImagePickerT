@@ -50,6 +50,19 @@ static BKImagePickerShareManager * sharedManager = nil;
     return _imagePickerModel;
 }
 
+#pragma mark - 选中数组的方法
+
+/// 更新选中数组中的数据
+-(void)updateSelectedImageModel:(BKImagePickerImageModel*)imageModel
+{
+    [self.imagePickerModel.selectImageArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([imageModel.fileName isEqualToString:obj.fileName]) {
+            [self.imagePickerModel.selectImageArray replaceObjectAtIndex:idx withObject:imageModel];
+            *stop = YES;
+        }
+    }];
+}
+
 #pragma mark - 提示
 
 -(UIAlertController*)presentAlert:(NSString*)title message:(NSString*)message actionTitleArr:(NSArray*)actionTitleArr actionMethod:(void (^)(NSInteger index))actionMethod
@@ -192,7 +205,7 @@ static BKImagePickerShareManager * sharedManager = nil;
 /**
  获取对应缩略图
  */
--(void)getThumbImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * thumbImage))complete
+-(PHImageRequestID)getThumbImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * thumbImage))complete
 {
     PHImageRequestOptions * thumbImageOptions = [[PHImageRequestOptions alloc] init];
     thumbImageOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
@@ -200,19 +213,20 @@ static BKImagePickerShareManager * sharedManager = nil;
     thumbImageOptions.synchronous = NO;
     thumbImageOptions.networkAccessAllowed = YES;
     
-    [self.cachingImageManager requestImageForAsset:asset targetSize:CGSizeMake(BKIP_SCREENW/2.0f, BKIP_SCREENW/2.0f) contentMode:PHImageContentModeAspectFill options:thumbImageOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    PHImageRequestID imageRequestID = [self.cachingImageManager requestImageForAsset:asset targetSize:CGSizeMake(BKIP_SCREENW/2.0f, BKIP_SCREENW/2.0f) contentMode:PHImageContentModeAspectFill options:thumbImageOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (complete) {
                 complete(result);
             }
         });
     }];
+    return imageRequestID;
 }
 
 /**
  获取对应原图
  */
--(void)getOriginalImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * originalImage))complete
+-(PHImageRequestID)getOriginalImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * originalImage))complete
 {
     PHImageRequestOptions * originalImageOptions = [[PHImageRequestOptions alloc] init];
     originalImageOptions.version = PHImageRequestOptionsVersionOriginal;
@@ -221,7 +235,7 @@ static BKImagePickerShareManager * sharedManager = nil;
     originalImageOptions.synchronous = NO;
     originalImageOptions.networkAccessAllowed = YES;
     
-    [self.cachingImageManager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:originalImageOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    PHImageRequestID imageRequestID = [self.cachingImageManager requestImageForAsset:asset targetSize:PHImageManagerMaximumSize contentMode:PHImageContentModeDefault options:originalImageOptions resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         // 排除取消，错误，低清图三种情况，即已经获取到了高清图
         BOOL downImageloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
@@ -241,12 +255,13 @@ static BKImagePickerShareManager * sharedManager = nil;
             });
         }
     }];
+    return imageRequestID;
 }
 
 /**
  获取对应原图data
  */
--(void)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete
+-(PHImageRequestID)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete
 {
     PHImageRequestOptions * originalImageOptions = [[PHImageRequestOptions alloc] init];
     originalImageOptions.version = PHImageRequestOptionsVersionOriginal;
@@ -272,12 +287,13 @@ static BKImagePickerShareManager * sharedManager = nil;
             }
         });
     }];
+    return imageRequestID;
 }
 
 /**
  获取视频
  */
--(void)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete
+-(PHImageRequestID)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete
 {
     PHVideoRequestOptions * options = [[PHVideoRequestOptions alloc]init];
     options.version = PHVideoRequestOptionsVersionOriginal;
@@ -287,12 +303,12 @@ static BKImagePickerShareManager * sharedManager = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             PHImageRequestID imageRequestID = [info[PHImageResultRequestIDKey] intValue];
             if (progressHandler) {
-                progressHandler(progress,error,imageRequestID);
+                progressHandler(progress, error, imageRequestID);
             }
         });
     }];
     
-    __block PHImageRequestID imageRequestID = [[PHImageManager defaultManager] requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
+    __block PHImageRequestID imageRequestID = [self.cachingImageManager requestAVAssetForVideo:asset options:options resultHandler:^(AVAsset * _Nullable asset, AVAudioMix * _Nullable audioMix, NSDictionary * _Nullable info) {
         AVPlayerItem * playerItem = [[AVPlayerItem alloc] initWithAsset:asset];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (complete) {
@@ -300,6 +316,13 @@ static BKImagePickerShareManager * sharedManager = nil;
             }
         });
     }];
+    return imageRequestID;
+}
+
+/// 取消获取
+-(void)cancelImageRequest:(PHImageRequestID)requestID
+{
+    [self.cachingImageManager cancelImageRequest:requestID];
 }
 
 #pragma mark - 压缩图片

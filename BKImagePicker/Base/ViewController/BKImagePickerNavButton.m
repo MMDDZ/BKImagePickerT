@@ -12,11 +12,6 @@
 @interface BKImagePickerNavButton()
 
 /**
- 图片位置
- */
-@property (nonatomic,assign) BKIPImagePosition imagePosition;
-
-/**
  图片Rect
  */
 @property (nonatomic,assign) CGRect imageRect;
@@ -29,11 +24,6 @@
  */
 @property (nonatomic,strong) NSAttributedString * titleStr;
 
-/**
- 调用方法
- */
-@property (nonatomic,strong) NSInvocation * invocation;
-
 @end
 
 @implementation BKImagePickerNavButton
@@ -42,7 +32,8 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
-        [self setupData];
+        self.backgroundColor = [UIColor clearColor];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -53,9 +44,9 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -64,10 +55,10 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _imageSize = imageSize;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -78,9 +69,9 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _title = title;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -89,10 +80,10 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _title = title;
         _font = font;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -101,10 +92,10 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _title = title;
         _titleColor = titleColor;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -113,11 +104,11 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _title = title;
         _font = font;
         _titleColor = titleColor;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -128,10 +119,10 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _title = title;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -140,11 +131,11 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _title = title;
         _imagePosition = imagePosition;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -153,11 +144,11 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _imageSize = imageSize;
         _title = title;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -166,12 +157,12 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _imageSize = imageSize;
         _title = title;
         _imagePosition = imagePosition;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
@@ -180,82 +171,95 @@
 {
     self = [super initWithFrame:CGRectMake(0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         _image = image;
         _imageSize = imageSize;
         _title = title;
         _font = font;
         _titleColor = titleColor;
         _imagePosition = imagePosition;
-        
-        [self setupData];
+        [self layoutSubviews];
     }
     return self;
 }
 
-#pragma mark - 点击方法
+#pragma mark - layoutSubviews
 
--(void)selfTapGestureRecognizer:(UITapGestureRecognizer*)recognizer
+-(void)layoutSubviews
 {
-    if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [self.invocation invoke];
-    }
-}
-
--(void)addTarget:(nullable id)target action:(nonnull SEL)action
-{
-    [self addTarget:target action:action objects:nil];
-}
-
--(void)addTarget:(nullable id)target action:(nonnull SEL)action object:(id)object
-{
-    [self addTarget:target action:action objects:@[object]];
-}
-
--(void)addTarget:(nullable id)target action:(nonnull SEL)action objects:(NSArray*)objects
-{
-    Class appearanceClass = NSClassFromString(@"_UIAppearance");
-    if ([target isMemberOfClass:appearanceClass]) {
-        return;
-    }
-    
-    NSMethodSignature * signature = [[target class] instanceMethodSignatureForSelector:action];
-    
-    self.invocation = [NSInvocation invocationWithMethodSignature:signature];
-    self.invocation.target = target;
-    self.invocation.selector = action;
-    //   0已经被self占用 1已经被_cmd占用
-    if ([objects count] == 1) {
-        id param = [objects firstObject];
-        [self.invocation setArgument:&param atIndex:2];
-    }else if ([objects count] > 1) {
-        [objects enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            id param = obj;
-            [self.invocation setArgument:&param atIndex:2+idx];
-        }];
-    }
-}
-
-#pragma mark - 初始化数据
-
--(void)setupData
-{
-    self.backgroundColor = [UIColor clearColor];
-    
-    if (!_titleColor) {
-        self.titleColor = BKIP_HEX_RGB(0x777777);
-    }
+    [super layoutSubviews];
     
     [self setupRect];
-    
-    [self.gestureRecognizers enumerateObjectsUsingBlock:^(__kindof UIGestureRecognizer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [self removeGestureRecognizer:obj];
-    }];
-    
-    UITapGestureRecognizer * selfTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selfTapGestureRecognizer:)];
-    [self addGestureRecognizer:selfTap];
-    
     [self setNeedsDisplay];
 }
+
+#pragma mark - 标题属性
+
+-(void)setTitle:(NSString *)title
+{
+    _title = title;
+    [self layoutSubviews];
+}
+
+-(void)setFont:(UIFont *)font
+{
+    _font = font;
+    [self layoutSubviews];
+}
+
+-(void)setTitleColor:(UIColor *)titleColor
+{
+    _titleColor = titleColor;
+    [self layoutSubviews];
+}
+
+#pragma mark - 图片属性
+
+-(void)setImage:(UIImage *)image
+{
+    _image = image;
+    [self setCsColorImage];
+}
+
+-(void)setImageSize:(CGSize)imageSize
+{
+    _imageSize = imageSize;
+    [self layoutSubviews];
+}
+
+-(void)setTintColor:(UIColor *)tintColor
+{
+    [super setTintColor:tintColor];
+    [self setCsColorImage];
+}
+
+-(void)setImagePosition:(BKIPImagePosition)imagePosition
+{
+    _imagePosition = imagePosition;
+    [self layoutSubviews];
+}
+
+#pragma mark - 修改图片颜色
+
+-(void)setCsColorImage
+{
+    if (_image) {
+        _image = [_image imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
+        
+        CGRect rect = CGRectMake(0, 0, _image.size.width, _image.size.height);
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextClipToMask(context, rect, _image.CGImage);
+        CGContextSetFillColorWithColor(context, self.tintColor.CGColor);
+        CGContextFillRect(context, rect);
+        UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        _image = [UIImage imageWithCGImage:img.CGImage scale:1 orientation: UIImageOrientationUp];
+    }
+    [self layoutSubviews];
+}
+
+#pragma mark - 设置初始化内容
 
 /**
  初始化Rect
@@ -278,12 +282,8 @@
                                 _imageSize.height);
         
     }else if (!_image && [_title length] != 0) {
-        
-        if (!_font) {
-            _font = [UIFont systemFontOfSize:15];
-        }
-        
-        _titleStr = [self setupTitleStr];
+    
+        _titleStr = [self setupTitleStrWithDefaultTitleFontSize:15];
         
         _titleRect.size.height = [_titleStr bk_calculateHeightWithUIWidth:FLT_MAX];
         _titleRect.origin.y = (self.frame.size.height - _titleRect.size.height)/2;
@@ -306,7 +306,7 @@
                 if (!_font) {
                     _font = [UIFont systemFontOfSize:14];
                 }
-                _titleStr = [self setupTitleStr];
+                _titleStr = [self setupTitleStrWithDefaultTitleFontSize:14];
                 CGFloat titleHeight = [_titleStr bk_calculateHeightWithUIWidth:FLT_MAX];
                 
                 _imageRect = CGRectMake(kBKIPTopNavBtnImageInsets,
@@ -327,10 +327,8 @@
                 if (CGSizeEqualToSize(_imageSize, CGSizeZero)) {
                     _imageSize = CGSizeMake(20, 20);
                 }
-                if (!_font) {
-                    _font = [UIFont systemFontOfSize:13];
-                }
-                _titleStr = [self setupTitleStr];
+           
+                _titleStr = [self setupTitleStrWithDefaultTitleFontSize:13];
                 CGFloat titleHeight = [_titleStr bk_calculateHeightWithUIWidth:FLT_MAX];
                 
                 _imageRect = CGRectMake((self.bk_width - _imageSize.width)/2,
@@ -353,10 +351,8 @@
                 if (CGSizeEqualToSize(_imageSize, CGSizeZero)) {
                     _imageSize = CGSizeMake(23, 23);
                 }
-                if (!_font) {
-                    _font = [UIFont systemFontOfSize:14];
-                }
-                _titleStr = [self setupTitleStr];
+             
+                _titleStr = [self setupTitleStrWithDefaultTitleFontSize:14];
                 CGFloat titleHeight = [_titleStr bk_calculateHeightWithUIWidth:FLT_MAX];
                 
                 _titleRect.size.height = titleHeight;
@@ -377,10 +373,8 @@
                 if (CGSizeEqualToSize(_imageSize, CGSizeZero)) {
                     _imageSize = CGSizeMake(20, 20);
                 }
-                if (!_font) {
-                    _font = [UIFont systemFontOfSize:13];
-                }
-                _titleStr = [self setupTitleStr];
+            
+                _titleStr = [self setupTitleStrWithDefaultTitleFontSize:13];
                 CGFloat titleHeight = [_titleStr bk_calculateHeightWithUIWidth:FLT_MAX];
                 
                 _titleRect.size.height = self.bk_height - _imageSize.height;
@@ -405,20 +399,24 @@
     }
 }
 
-/**
- 设置文本
- 
- @return 文本
- */
--(NSAttributedString*)setupTitleStr
+/// 设置文本
+/// @param dFontSize 字号
+-(NSAttributedString*)setupTitleStrWithDefaultTitleFontSize:(CGFloat)dFontSize
 {
+    if (!_font) {
+        _font = [UIFont systemFontOfSize:dFontSize];
+    }
+    if (!_titleColor) {
+        _titleColor = BKIP_NAV_BTN_TITLE_COLOR;
+    }
+    
     NSMutableParagraphStyle * paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
     NSAttributedString * titleStr = [[NSAttributedString alloc] initWithString:_title attributes:@{NSFontAttributeName:_font,
-                                                                                                   NSForegroundColorAttributeName:_titleColor,
-                                                                                                   NSParagraphStyleAttributeName:paragraphStyle}];
+                     NSForegroundColorAttributeName:_titleColor,
+                     NSParagraphStyleAttributeName:paragraphStyle}];
     
     return titleStr;
 }
@@ -436,51 +434,6 @@
     }else if (_image && [_title length] > 0) {
         [_image drawInRect:_imageRect];
         [_titleStr drawInRect:_titleRect];
-    }
-}
-
-#pragma mark - 修改
-
--(void)setTitle:(NSString *)title
-{
-    _title = title;
-    [self setupData];
-}
-
--(void)setTitleColor:(UIColor *)titleColor
-{
-    _titleColor = titleColor;
-    [self setupData];
-}
-
--(void)setImage:(UIImage *)image
-{
-    _image = image;
-    [self setupData];
-}
-
--(void)setImageSize:(CGSize)imageSize
-{
-    _imageSize = imageSize;
-    [self setupData];
-}
-
--(void)setTintColor:(UIColor *)tintColor
-{
-    [super setTintColor:tintColor];
-    
-    if (_image) {
-        _image = [_image imageWithRenderingMode:(UIImageRenderingModeAlwaysTemplate)];
-        
-        CGRect rect = CGRectMake(0, 0, _image.size.width, _image.size.height);
-        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0);
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextClipToMask(context, rect, _image.CGImage);
-        CGContextSetFillColorWithColor(context, tintColor.CGColor);
-        CGContextFillRect(context, rect);
-        UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        _image = [UIImage imageWithCGImage:img.CGImage scale:1 orientation: UIImageOrientationUp];
     }
 }
 

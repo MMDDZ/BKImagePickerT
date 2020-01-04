@@ -15,6 +15,10 @@
 		1D34B06923137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B06723137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m */; };
 		1D34B06C23137B16009524D6 /* BKIPTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D34B06A23137B16009524D6 /* BKIPTransitionAnimater.h */; };
 		1D34B06D23137B16009524D6 /* BKIPTransitionAnimater.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D34B06B23137B16009524D6 /* BKIPTransitionAnimater.m */; };
+		1D7BEAD223BADF0100885225 /* BKIPImagePickerOriginalButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D7BEAD023BADF0100885225 /* BKIPImagePickerOriginalButton.h */; };
+		1D7BEAD323BADF0100885225 /* BKIPImagePickerOriginalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D7BEAD123BADF0100885225 /* BKIPImagePickerOriginalButton.m */; };
+		1D9E155223C038CE007B5F1E /* BKIPPreviewPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D9E155023C038CE007B5F1E /* BKIPPreviewPlayerView.h */; };
+		1D9E155323C038CE007B5F1E /* BKIPPreviewPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D9E155123C038CE007B5F1E /* BKIPPreviewPlayerView.m */; };
 		1DBF7BBC2311024A00724024 /* BKImagePicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1DBF7BBB2311024A00724024 /* BKImagePicker.bundle */; };
 		1DBF7BC3231102B200724024 /* NSObject+BKImagePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DBF7BC1231102B200724024 /* NSObject+BKImagePicker.h */; };
 		1DBF7BC4231102B200724024 /* NSObject+BKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DBF7BC2231102B200724024 /* NSObject+BKImagePicker.m */; };
@@ -64,6 +68,18 @@
 		1DC12920232A395B00EA5E31 /* BKImagePickerGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC1291E232A395B00EA5E31 /* BKImagePickerGradientView.m */; };
 		1DC12923232A3CE500EA5E31 /* BKIPImagePickerSelectButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC12921232A3CE500EA5E31 /* BKIPImagePickerSelectButton.h */; };
 		1DC12924232A3CE500EA5E31 /* BKIPImagePickerSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC12922232A3CE500EA5E31 /* BKIPImagePickerSelectButton.m */; };
+		1DE8835E23B9F9900043A53B /* BKIPPreviewViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8835C23B9F9900043A53B /* BKIPPreviewViewController.h */; };
+		1DE8835F23B9F9900043A53B /* BKIPPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8835D23B9F9900043A53B /* BKIPPreviewViewController.m */; };
+		1DE8836223B9FB640043A53B /* BKIPPreviewTransitionAnimater.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8836023B9FB640043A53B /* BKIPPreviewTransitionAnimater.h */; };
+		1DE8836323B9FB640043A53B /* BKIPPreviewTransitionAnimater.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8836123B9FB640043A53B /* BKIPPreviewTransitionAnimater.m */; };
+		1DE8836623B9FBA90043A53B /* BKIPPreviewInteractiveTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8836423B9FBA90043A53B /* BKIPPreviewInteractiveTransition.h */; };
+		1DE8836723B9FBA90043A53B /* BKIPPreviewInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8836523B9FBA90043A53B /* BKIPPreviewInteractiveTransition.m */; };
+		1DE8836A23B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8836823B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.h */; };
+		1DE8836B23B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8836923B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.m */; };
+		1DE8836E23BA13E00043A53B /* BKIPPreviewCollectionViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8836C23BA13E00043A53B /* BKIPPreviewCollectionViewCell.h */; };
+		1DE8836F23BA13E00043A53B /* BKIPPreviewCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8836D23BA13E00043A53B /* BKIPPreviewCollectionViewCell.m */; };
+		1DE8837323BA15200043A53B /* BKIPImageView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DE8837123BA15200043A53B /* BKIPImageView.h */; };
+		1DE8837423BA15200043A53B /* BKIPImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DE8837223BA15200043A53B /* BKIPImageView.m */; };
 		BFC8576556C65AA5F5847186 /* Pods_BKImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5D691A6B0B172E2E6A9405 /* Pods_BKImagePicker.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +93,10 @@
 		1D34B06723137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
 		1D34B06A23137B16009524D6 /* BKIPTransitionAnimater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPTransitionAnimater.h; sourceTree = "<group>"; };
 		1D34B06B23137B16009524D6 /* BKIPTransitionAnimater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPTransitionAnimater.m; sourceTree = "<group>"; };
+		1D7BEAD023BADF0100885225 /* BKIPImagePickerOriginalButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImagePickerOriginalButton.h; sourceTree = "<group>"; };
+		1D7BEAD123BADF0100885225 /* BKIPImagePickerOriginalButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImagePickerOriginalButton.m; sourceTree = "<group>"; };
+		1D9E155023C038CE007B5F1E /* BKIPPreviewPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewPlayerView.h; sourceTree = "<group>"; };
+		1D9E155123C038CE007B5F1E /* BKIPPreviewPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewPlayerView.m; sourceTree = "<group>"; };
 		1DBF7BA12310E1D900724024 /* BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DBF7BB5231101A200724024 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DBF7BBB2311024A00724024 /* BKImagePicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BKImagePicker.bundle; sourceTree = "<group>"; };
@@ -128,6 +148,18 @@
 		1DC1291E232A395B00EA5E31 /* BKImagePickerGradientView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKImagePickerGradientView.m; sourceTree = "<group>"; };
 		1DC12921232A3CE500EA5E31 /* BKIPImagePickerSelectButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImagePickerSelectButton.h; sourceTree = "<group>"; };
 		1DC12922232A3CE500EA5E31 /* BKIPImagePickerSelectButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImagePickerSelectButton.m; sourceTree = "<group>"; };
+		1DE8835C23B9F9900043A53B /* BKIPPreviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewViewController.h; sourceTree = "<group>"; };
+		1DE8835D23B9F9900043A53B /* BKIPPreviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewViewController.m; sourceTree = "<group>"; };
+		1DE8836023B9FB640043A53B /* BKIPPreviewTransitionAnimater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewTransitionAnimater.h; sourceTree = "<group>"; };
+		1DE8836123B9FB640043A53B /* BKIPPreviewTransitionAnimater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewTransitionAnimater.m; sourceTree = "<group>"; };
+		1DE8836423B9FBA90043A53B /* BKIPPreviewInteractiveTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewInteractiveTransition.h; sourceTree = "<group>"; };
+		1DE8836523B9FBA90043A53B /* BKIPPreviewInteractiveTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewInteractiveTransition.m; sourceTree = "<group>"; };
+		1DE8836823B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		1DE8836923B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		1DE8836C23BA13E00043A53B /* BKIPPreviewCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPPreviewCollectionViewCell.h; sourceTree = "<group>"; };
+		1DE8836D23BA13E00043A53B /* BKIPPreviewCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPPreviewCollectionViewCell.m; sourceTree = "<group>"; };
+		1DE8837123BA15200043A53B /* BKIPImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BKIPImageView.h; sourceTree = "<group>"; };
+		1DE8837223BA15200043A53B /* BKIPImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BKIPImageView.m; sourceTree = "<group>"; };
 		3D5D691A6B0B172E2E6A9405 /* Pods_BKImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BKImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F1378E0C3E259A61E27739D /* Pods-BKImagePicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BKImagePicker.debug.xcconfig"; path = "Target Support Files/Pods-BKImagePicker/Pods-BKImagePicker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +261,7 @@
 		1DBF7BB92311020800724024 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				1DE8837023BA15050043A53B /* ImageView */,
 				1DBF7BE8231107A100724024 /* NavigationController */,
 				1DBF7BE7231107A100724024 /* ViewController */,
 			);
@@ -345,6 +378,8 @@
 				1DC12907232A304100EA5E31 /* BKIPImagePickerCollectionViewCell.m */,
 				1DC12921232A3CE500EA5E31 /* BKIPImagePickerSelectButton.h */,
 				1DC12922232A3CE500EA5E31 /* BKIPImagePickerSelectButton.m */,
+				1D7BEAD023BADF0100885225 /* BKIPImagePickerOriginalButton.h */,
+				1D7BEAD123BADF0100885225 /* BKIPImagePickerOriginalButton.m */,
 				1DC1290A232A306600EA5E31 /* BKIPImagePickerCollectionReusableFooterView.h */,
 				1DC1290B232A306600EA5E31 /* BKIPImagePickerCollectionReusableFooterView.m */,
 			);
@@ -401,6 +436,8 @@
 		1DBF7C1F231130E600724024 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1DE8835C23B9F9900043A53B /* BKIPPreviewViewController.h */,
+				1DE8835D23B9F9900043A53B /* BKIPPreviewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -408,6 +445,12 @@
 		1DBF7C20231130E600724024 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1DE8836023B9FB640043A53B /* BKIPPreviewTransitionAnimater.h */,
+				1DE8836123B9FB640043A53B /* BKIPPreviewTransitionAnimater.m */,
+				1DE8836423B9FBA90043A53B /* BKIPPreviewInteractiveTransition.h */,
+				1DE8836523B9FBA90043A53B /* BKIPPreviewInteractiveTransition.m */,
+				1DE8836823B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.h */,
+				1DE8836923B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,8 +458,21 @@
 		1DBF7C21231130E600724024 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1DE8836C23BA13E00043A53B /* BKIPPreviewCollectionViewCell.h */,
+				1DE8836D23BA13E00043A53B /* BKIPPreviewCollectionViewCell.m */,
+				1D9E155023C038CE007B5F1E /* BKIPPreviewPlayerView.h */,
+				1D9E155123C038CE007B5F1E /* BKIPPreviewPlayerView.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		1DE8837023BA15050043A53B /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1DE8837123BA15200043A53B /* BKIPImageView.h */,
+				1DE8837223BA15200043A53B /* BKIPImageView.m */,
+			);
+			path = ImageView;
 			sourceTree = "<group>";
 		};
 		56DAE17090A770C404EC1D9E /* Frameworks */ = {
@@ -452,8 +508,11 @@
 				1D34B06C23137B16009524D6 /* BKIPTransitionAnimater.h in Headers */,
 				1D34B06823137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.h in Headers */,
 				1DBF7BDA2311060100724024 /* BKImagePickerInline.h in Headers */,
+				1DE8835E23B9F9900043A53B /* BKIPPreviewViewController.h in Headers */,
+				1D7BEAD223BADF0100885225 /* BKIPImagePickerOriginalButton.h in Headers */,
 				1DBF7BD32311035800724024 /* UIImage+BKImagePicker.h in Headers */,
 				1DBF7BD72311036800724024 /* UIView+BKImagePicker.h in Headers */,
+				1DE8836A23B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.h in Headers */,
 				1DBF7BF623110E9300724024 /* BKImagePickerNavButton.h in Headers */,
 				1DBF7BCB231102E300724024 /* NSAttributedString+BKImagePicker.h in Headers */,
 				1DC129042329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.h in Headers */,
@@ -462,17 +521,22 @@
 				1DBF7C3223113A9400724024 /* BKIPImagePickerViewController.h in Headers */,
 				1DC12908232A304100EA5E31 /* BKIPImagePickerCollectionViewCell.h in Headers */,
 				1DBF7BDF2311063000724024 /* BKImagePickerConstant.h in Headers */,
+				1DE8837323BA15200043A53B /* BKIPImageView.h in Headers */,
+				1DE8836E23BA13E00043A53B /* BKIPPreviewCollectionViewCell.h in Headers */,
 				1DBF7BE6231106A000724024 /* BKImagePickerHeader.h in Headers */,
 				1DBF7C0C231122CF00724024 /* BKImagePickerModel.h in Headers */,
 				1DBF7BFF23111F8F00724024 /* BKImagePickerNavigationController.h in Headers */,
 				1DBF7BF523110E9300724024 /* BKImagePickerBaseViewController.h in Headers */,
 				1D34B06023137274009524D6 /* UINavigationController+BKImagePicker.h in Headers */,
+				1DE8836623B9FBA90043A53B /* BKIPPreviewInteractiveTransition.h in Headers */,
+				1DE8836223B9FB640043A53B /* BKIPPreviewTransitionAnimater.h in Headers */,
 				1D34B06423137A43009524D6 /* UIViewController+BKImagePicker.h in Headers */,
 				1DBF7C2E23113A7900724024 /* BKIPImageAlbumListViewController.h in Headers */,
 				1DBF7C0F2311243900724024 /* BKImagePickerImageModel.h in Headers */,
 				1DBF7BC3231102B200724024 /* NSObject+BKImagePicker.h in Headers */,
 				1DBF7C072311229B00724024 /* BKImagePickerShareManager.h in Headers */,
 				1DBF7BDC2311061700724024 /* BKImagePickerMacro.h in Headers */,
+				1D9E155223C038CE007B5F1E /* BKIPPreviewPlayerView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +568,7 @@
 		1DBF7B982310E1D900724024 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = BIKE;
 				TargetAttributes = {
 					1DBF7BA02310E1D900724024 = {
@@ -518,6 +582,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 1DBF7B972310E1D900724024;
 			productRefGroup = 1DBF7BA22310E1D900724024 /* Products */;
@@ -575,6 +640,7 @@
 				1DBF7BF723110E9300724024 /* BKImagePickerBaseViewController.m in Sources */,
 				1DBF7C082311229B00724024 /* BKImagePickerShareManager.m in Sources */,
 				1DBF7C102311243900724024 /* BKImagePickerImageModel.m in Sources */,
+				1DE8836B23B9FBFC0043A53B /* BKIPPreviewCollectionViewFlowLayout.m in Sources */,
 				1DBF7BC4231102B200724024 /* NSObject+BKImagePicker.m in Sources */,
 				1DBF7C0B231122CF00724024 /* BKImagePickerModel.m in Sources */,
 				1DC129012329E4A800EA5E31 /* BKIPImageAlbumListModel.m in Sources */,
@@ -583,18 +649,25 @@
 				1DBF7BE02311063000724024 /* BKImagePickerConstant.m in Sources */,
 				1DC12924232A3CE500EA5E31 /* BKIPImagePickerSelectButton.m in Sources */,
 				1DC12920232A395B00EA5E31 /* BKImagePickerGradientView.m in Sources */,
+				1DE8837423BA15200043A53B /* BKIPImageView.m in Sources */,
 				1DBF7C0023111F8F00724024 /* BKImagePickerNavigationController.m in Sources */,
 				1D34B06D23137B16009524D6 /* BKIPTransitionAnimater.m in Sources */,
 				1D34B06123137274009524D6 /* UINavigationController+BKImagePicker.m in Sources */,
+				1D9E155323C038CE007B5F1E /* BKIPPreviewPlayerView.m in Sources */,
 				1DBF7BF823110E9300724024 /* BKImagePickerNavButton.m in Sources */,
 				1DC129052329E50700EA5E31 /* BKIPImageAlbumListTableViewCell.m in Sources */,
 				1DBF7BCC231102E300724024 /* NSAttributedString+BKImagePicker.m in Sources */,
 				1D34B06923137A9F009524D6 /* BKIPPercentDrivenInteractiveTransition.m in Sources */,
+				1DE8836723B9FBA90043A53B /* BKIPPreviewInteractiveTransition.m in Sources */,
 				1DBF7BD82311036800724024 /* UIView+BKImagePicker.m in Sources */,
 				1DBF7BFC23111F4400724024 /* BKImagePicker.m in Sources */,
+				1DE8836323B9FB640043A53B /* BKIPPreviewTransitionAnimater.m in Sources */,
 				1DBF7BD02311031400724024 /* UIBezierPath+BKImagePicker.m in Sources */,
+				1D7BEAD323BADF0100885225 /* BKIPImagePickerOriginalButton.m in Sources */,
 				1DBF7BD42311035800724024 /* UIImage+BKImagePicker.m in Sources */,
 				1DBF7C2F23113A7900724024 /* BKIPImageAlbumListViewController.m in Sources */,
+				1DE8836F23BA13E00043A53B /* BKIPPreviewCollectionViewCell.m in Sources */,
+				1DE8835F23B9F9900043A53B /* BKIPPreviewViewController.m in Sources */,
 				1DBF7BC8231102CD00724024 /* NSString+BKImagePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

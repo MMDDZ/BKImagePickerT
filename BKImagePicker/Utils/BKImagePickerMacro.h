@@ -20,6 +20,13 @@
 //所有线的颜色
 #define BKIP_LINE_COLOR BKIP_HEX_RGB(0xE4E4E4)
 
+//loading框背景颜色
+#define BKIP_Loading_BackgroundColor [UIColor colorWithWhite:0 alpha:0.75]
+//loading中旋转圆圈颜色
+#define BKIP_Loading_CircleBackgroundColor [UIColor whiteColor]
+//loading中文字的颜色
+#define BK_Loading_TitleColor [UIColor colorWithWhite:0.5 alpha:1]
+
 /********************************** 相簿界面、修改图片界面 **********************************/
 
 //相册列表 相册名称颜色
@@ -33,7 +40,7 @@
 //相片列表 (未选中)发送图片按钮背景颜色
 #define BKIP_ImagePicker_SendNormalBackgroundColor [UIColor colorWithWhite:0.8 alpha:1]
 //相片列表 (有选中)发送图片按钮背景颜色
-#define BKIP_ImagePicker_SendHighlightedBackgroundColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_ImagePicker_SendHighlightedBackgroundColor BKIP_HEX_RGB(0x2D96FA)
 //相片列表 列表底部图片数量标注颜色
 #define BKIP_ImagePicker_ImageNumberTitleColor [UIColor colorWithWhite:0.5 alpha:1]
 //相片列表 视频时长颜色
@@ -43,7 +50,7 @@
 //相片列表 (未选中)选中图片按钮背景颜色
 #define BKIP_ImagePicker_SelectImageNumberNormalBackgroundColor [UIColor colorWithWhite:0.2 alpha:0.5]
 //相片列表 (选中)选中图片按钮背景颜色
-#define BKIP_ImagePicker_SelectImageNumberHighlightedBackgroundColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_ImagePicker_SelectImageNumberHighlightedBackgroundColor BKIP_HEX_RGB(0x2D96FA)
 //相片列表 选中图片按钮边框线颜色
 #define BKIP_ImagePicker_SelectImageNumberBorderColor [UIColor whiteColor]
 //相片列表 选中图片数量颜色
@@ -59,19 +66,19 @@
 //编辑图片 背景颜色
 #define BKIP_EditImage_BackgroundColor [UIColor blackColor]
 //编辑图片 多张图编辑时选中框的颜色
-#define BKIP_EditImage_SelectImageFrameColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_EditImage_SelectImageFrameColor BKIP_HEX_RGB(0x2D96FA)
 //编辑图片 底部按钮的颜色(取消,确认)
-#define BKIP_EditImage_BottomBtnBackgroundColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_EditImage_BottomBtnBackgroundColor BKIP_HEX_RGB(0x2D96FA)
 //编辑图片 编辑栏中字的颜色
 #define BKIP_EditImage_BottomTitleColor [UIColor whiteColor]
 //编辑图片 编辑文字输入框背景颜色
 #define BKIP_EditImage_TextViewBackgroundColor BKNavBackgroundColor
 //编辑图片 (文字未拖入)删除输入文字按钮背景颜色
-#define BKIP_EditImage_DeleteWriteNormalBackgroundColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_EditImage_DeleteWriteNormalBackgroundColor BKIP_HEX_RGB(0x2D96FA)
 //编辑图片 (文字已拖入)删除输入文字按钮背景颜色
-#define BKIP_EditImage_DeleteWriteHighlightedBackgroundColor BK_HEX_RGB(0xff725c)
+#define BKIP_EditImage_DeleteWriteHighlightedBackgroundColor BKIP_HEX_RGB(0xff725c)
 //编辑图片 拖动输入文字四周的框
-#define BKIP_EditImage_TextFrameColor BK_HEX_RGB(0x2D96FA)
+#define BKIP_EditImage_TextFrameColor BKIP_HEX_RGB(0x2D96FA)
 //编辑图片 裁剪四周阴影的颜色
 #define BKIP_EditImage_ClipShadowBackgroundColor [UIColor colorWithWhite:0 alpha:0.6]
 //编辑图片 裁剪框的颜色

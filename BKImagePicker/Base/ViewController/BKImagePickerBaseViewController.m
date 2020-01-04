@@ -146,7 +146,7 @@
 -(void)addLeftBackNavBtn
 {
     BKImagePickerNavButton * backBtn = [[BKImagePickerNavButton alloc] initWithImage:[UIImage imageWithImageName:@"nav_back"]];
-    [backBtn addTarget:self action:@selector(leftNavBtnAction)];
+    [backBtn addTarget:self action:@selector(leftNavBtnAction) forControlEvents:UIControlEventTouchUpInside];
     self.leftNavBtns = @[backBtn];
 }
 
@@ -175,6 +175,7 @@
         lastBtn = currentBtn;
     }
     self.leftNavSpace = CGRectGetMaxX(lastBtn.frame);
+    [self viewWillLayoutSubviews];
 }
 
 -(void)setRightNavBtns:(NSArray<BKImagePickerNavButton *> *)rightNavBtns
@@ -189,6 +190,7 @@
         lastBtn = currentBtn;
     }
     self.rightNavSpace = self.topNavView.bk_width - lastBtn.bk_x;
+    [self viewWillLayoutSubviews];
 }
 
 #pragma mark - 底部导航

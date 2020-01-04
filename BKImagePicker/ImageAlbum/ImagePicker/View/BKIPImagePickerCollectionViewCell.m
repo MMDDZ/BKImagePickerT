@@ -7,13 +7,11 @@
 //
 
 #import "BKIPImagePickerCollectionViewCell.h"
-#import "BKIPImagePickerSelectButton.h"
 
 NSString * const kBKIPImagePickerCollectionViewCellID = @"BKIPImagePickerCollectionViewCell";
 
 @interface BKIPImagePickerCollectionViewCell()
 
-@property (nonatomic,strong) BKIPImagePickerSelectButton * selectBtn;
 @property (nonatomic,strong) BKImagePickerGradientView * bgGradientView;
 @property (nonatomic,strong) UILabel * typeLab;
 @property (nonatomic,strong) UILabel * timeLab;
@@ -53,7 +51,13 @@ NSString * const kBKIPImagePickerCollectionViewCellID = @"BKIPImagePickerCollect
     [self.contentView addSubview:self.displayImageView];
     
     self.selectBtn = [[BKIPImagePickerSelectButton alloc] init];
+    [self.selectBtn addTarget:self action:@selector(selectBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.selectBtn];
+    if ([BKImagePickerShareManager sharedManager].imagePickerModel.maxSelect == 1) {
+        self.selectBtn.hidden = YES;
+    }else {
+        self.selectBtn.hidden = NO;
+    }
     
     self.bgGradientView = [[BKImagePickerGradientView alloc] init];
     self.bgGradientView.startPoint = CGPointMake(0.5, 0);
@@ -72,6 +76,15 @@ NSString * const kBKIPImagePickerCollectionViewCellID = @"BKIPImagePickerCollect
     self.timeLab.font = BKIP_regular_font(10*BKIP_SCREENW/375);
     self.timeLab.textAlignment = NSTextAlignmentRight;
     [self.contentView addSubview:self.timeLab];
+}
+
+#pragma mark - 触发事件
+
+-(void)selectBtnClick:(UIButton*)button
+{
+    if (self.model && self.clickSelectBtnCallBack) {
+        self.clickSelectBtnCallBack(self.model, self.indexPath);
+    }
 }
 
 #pragma mark - 赋值

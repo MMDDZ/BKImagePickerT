@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, BKIPImagePosition) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BKImagePickerNavButton : UIView
+@interface BKImagePickerNavButton : UIControl
 
 /***************************************************************************************************
  默认frame = CGRectMake(自动排列间距0, BKIP_get_system_statusBar_height(), BKIP_get_system_nav_ui_height(), BKIP_get_system_nav_ui_height())
@@ -51,35 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(nonnull instancetype)initWithImage:(nonnull UIImage *)image imageSize:(CGSize)imageSize title:(nonnull NSString*)title imagePosition:(BKIPImagePosition)imagePosition;
 -(nonnull instancetype)initWithImage:(nonnull UIImage *)image imageSize:(CGSize)imageSize title:(nonnull NSString*)title font:(nonnull UIFont*)font titleColor:(nonnull UIColor*)titleColor imagePosition:(BKIPImagePosition)imagePosition;
 
-#pragma mark - 点击方法
-
-/**
- 点击方法(无参数)
- 
- @param target 对象
- @param action 方法
- */
--(void)addTarget:(nullable id)target action:(nonnull SEL)action;
-
-/**
- 点击方法(单参数)
- 
- @param target 对象
- @param action 方法
- @param object 单参数
- */
--(void)addTarget:(nullable id)target action:(nonnull SEL)action object:(nullable id)object;
-
-/**
- 点击方法(多参数)
- 
- @param target 对象
- @param action 方法
- @param objects 多参数
- */
--(void)addTarget:(nullable id)target action:(nonnull SEL)action objects:(nullable NSArray*)objects;
-
-#pragma mark - 修改
+#pragma mark - 标题属性
 
 /**
  标题
@@ -93,6 +65,9 @@ NS_ASSUME_NONNULL_BEGIN
  标题颜色
  */
 @property (nonatomic,strong,nonnull) UIColor * titleColor;
+
+#pragma mark - 图片属性
+
 /**
  图片
  */
@@ -101,6 +76,13 @@ NS_ASSUME_NONNULL_BEGIN
  图片大小
  */
 @property (nonatomic,assign) CGSize imageSize;
+
+/*
+ 图片颜色用tintColor修改
+ */
+
+/// 图片位置
+@property (nonatomic,assign) BKIPImagePosition imagePosition;
 
 @end
 

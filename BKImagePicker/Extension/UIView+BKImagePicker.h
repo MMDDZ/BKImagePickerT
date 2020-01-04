@@ -48,6 +48,34 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, assign) CGFloat bk_centerY;
 
+#pragma mark - Loading
+
+/**
+ 查找view中是否存在loadLayer
+ 
+ @return loadLayer
+ */
+-(CALayer*)bk_findLoadLayer;
+
+/**
+ 加载Loading
+ 
+ @return loadLayer
+ */
+-(CALayer*)bk_showLoadLayer;
+
+/**
+ 加载Loading 带下载进度
+ 
+ @param progress 进度
+ */
+-(void)bk_showLoadLayerWithDownLoadProgress:(CGFloat)progress;
+
+/**
+ 隐藏Loading
+ */
+-(void)bk_hideLoadLayer;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -43,9 +43,9 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic,assign) CGFloat loadingProgress;
 /**
- 原图大小
+ 原文件大小
  */
-@property (nonatomic,assign) double originalImageSize;
+@property (nonatomic,assign) double originalFileSize;
 /**
  URL
  */

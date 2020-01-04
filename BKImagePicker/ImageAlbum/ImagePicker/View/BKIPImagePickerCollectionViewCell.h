@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BKIPImagePickerSelectButton.h"
 #import "BKImagePickerHeader.h"
 
 UIKIT_EXTERN NSString * _Nonnull const kBKIPImagePickerCollectionViewCellID;
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - UI
 
 @property (nonatomic,strong) UIImageView * displayImageView;
+@property (nonatomic,strong) BKIPImagePickerSelectButton * selectBtn;
 
 #pragma mark - 回调
 

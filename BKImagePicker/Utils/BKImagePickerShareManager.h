@@ -30,6 +30,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 +(instancetype)sharedManager;
 
+#pragma mark - 选中数组的方法
+
+/// 更新选中数组中的数据
+/// @param imageModel 对应数据
+-(void)updateSelectedImageModel:(BKImagePickerImageModel*)imageModel;
+
 #pragma mark - 提示
 
 -(UIAlertController*)presentAlert:(NSString*)title message:(NSString*)message actionTitleArr:(NSArray*)actionTitleArr actionMethod:(void (^)(NSInteger index))actionMethod;
@@ -51,7 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param asset 相片
  @param complete 完成方法
  */
--(void)getThumbImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * thumbImage))complete;
+-(PHImageRequestID)getThumbImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * thumbImage))complete;
 
 /**
  获取对应原图
@@ -59,7 +65,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param asset 相片
  @param complete 完成方法
  */
--(void)getOriginalImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * originalImage))complete;
+-(PHImageRequestID)getOriginalImageWithAsset:(PHAsset*)asset complete:(void (^)(UIImage * originalImage))complete;
 
 /**
  获取对应原图data
@@ -68,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param progressHandler 下载进度返回
  @param complete 完成方法
  */
--(void)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete;
+-(PHImageRequestID)getOriginalImageDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(NSData * originalImageData, NSURL * url, PHImageRequestID imageRequestID))complete;
 
 /**
  获取视频
@@ -77,7 +83,11 @@ NS_ASSUME_NONNULL_BEGIN
  @param progressHandler 下载进度返回
  @param complete 完成方法
  */
--(void)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete;
+-(PHImageRequestID)getVideoDataWithAsset:(PHAsset*)asset progressHandler:(void (^)(double progress, NSError * error, PHImageRequestID imageRequestID))progressHandler complete:(void (^)(AVPlayerItem * playerItem, PHImageRequestID imageRequestID))complete;
+
+/// 取消获取
+/// @param requestID 获取的id
+-(void)cancelImageRequest:(PHImageRequestID)requestID;
 
 #pragma mark - 压缩图片
 

@@ -26,6 +26,6 @@
 
 #import "BKImagePickerBaseViewController.h"
 #import "BKImagePickerNavigationController.h"
-
+#import "BKIPImageView.h"
 
 #endif /* BKImagePickerHeader_h */

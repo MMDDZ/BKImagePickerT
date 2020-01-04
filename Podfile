@@ -8,13 +8,13 @@ workspace 'BKImagePicker.xcworkspace'
 target 'BKImagePickerDemo' do
   project 'Demo/BKImagePickerDemo.xcodeproj'
 
-  pod 'FLAnimatedImage', '~> 1.0.12'
+  pod 'SDWebImage', '~> 5.0.0'
 
 end
 
 target 'BKImagePicker' do
   project 'BKImagePicker.xcodeproj'
 
-  pod 'FLAnimatedImage', '~> 1.0.12'
+  pod 'SDWebImage', '~> 5.0.0'
 
 end

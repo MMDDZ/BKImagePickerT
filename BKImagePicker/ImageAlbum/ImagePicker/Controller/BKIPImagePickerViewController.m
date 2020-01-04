@@ -11,36 +11,31 @@
 #import "BKImagePickerHeader.h"
 #import "BKIPImagePickerCollectionViewCell.h"
 #import "BKIPImagePickerCollectionReusableFooterView.h"
+#import "BKIPPreviewViewController.h"
+#import "BKIPImagePickerOriginalButton.h"
 
-@interface BKIPImagePickerViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface BKIPImagePickerViewController () <UICollectionViewDelegate, UICollectionViewDataSource, BKIPPreviewViewControllerDelegate>
 
 @property (nonatomic,strong) UICollectionView * collectionView;
 
-/**
- 资源数组
- */
+/// 资源数组
 @property (nonatomic,strong) NSMutableArray<BKImagePickerImageModel*> * assetListArray;
-/**
- list数据(不包括视频)
- */
-@property (nonatomic,strong) NSMutableArray<BKImagePickerImageModel*> * imageListArray;
 
-/**
- 该相簿中所有照片和视频总数
- */
+/// 该相簿中所有照片和视频总数
 @property (nonatomic,assign) NSUInteger allAssestNum;
-/**
- 该相簿中除gif外所有其他类型照片总数
- */
+/// 该相簿中除gif外所有其他类型照片总数
 @property (nonatomic,assign) NSUInteger allImageNum;
-/**
- 该相簿中所有GIF照片总数
- */
+/// 该相簿中所有GIF照片总数
 @property (nonatomic,assign) NSUInteger allGifImageNum;
-/**
- 该相簿中所有视频总数
- */
+/// 该相簿中所有视频总数
 @property (nonatomic,assign) NSUInteger allVideoNum;
+
+/// 预览按钮
+@property (nonatomic,strong) UIButton * previewBtn;
+/// 原图按钮
+@property (nonatomic,strong) BKIPImagePickerOriginalButton * originalBtn;
+/// 发送按钮
+@property (nonatomic,strong) UIButton * sendBtn;
 
 @end
 
@@ -54,14 +49,6 @@
         _assetListArray = [NSMutableArray array];
     }
     return _assetListArray;
-}
-
--(NSMutableArray<BKImagePickerImageModel *> *)imageListArray
-{
-    if (!_imageListArray) {
-        _imageListArray = [NSMutableArray array];
-    }
-    return _imageListArray;
 }
 
 -(void)getAllAssetCollection
@@ -114,7 +101,6 @@
                         self.allGifImageNum++;
                         model.photoType = BKIPSelectTypeGIF;
                     }
-                    [self.imageListArray addObject:model];
                 }else{
                     self.allVideoNum++;
                     model.photoType = BKIPSelectTypeVideo;
@@ -193,9 +179,9 @@
     self.allVideoNum = 0;
     
     [self initTopNav];
-//    if ([BKImagePicker sharedManager].imageManageModel.max_select != 1) {
-//        [self initBottomNav];
-//    }
+    if ([BKImagePickerShareManager sharedManager].imagePickerModel.maxSelect > 1) {
+        [self initBottomNav];
+    }
     
     [self.view insertSubview:self.collectionView atIndex:0];
     [self getAllAssetCollection];
@@ -213,7 +199,7 @@
 -(void)initTopNav
 {
     BKImagePickerNavButton * rightNavBtn = [[BKImagePickerNavButton alloc] initWithTitle:@"取消" font:[UIFont systemFontOfSize:16] titleColor:BKIP_NAV_BTN_TITLE_COLOR];
-    [rightNavBtn addTarget:self action:@selector(rightNavBtnClick)];
+    [rightNavBtn addTarget:self action:@selector(rightNavBtnClick) forControlEvents:UIControlEventTouchUpInside];
     self.rightNavBtns = @[rightNavBtn];
 }
 
@@ -223,7 +209,192 @@
     if (observer) {
         [[NSNotificationCenter defaultCenter] removeObserver:observer];
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - initBottomNav
+
+-(void)initBottomNav
+{
+    self.bottomNavViewHeight = BKIP_get_system_tabbar_height();
     
+    [self.bottomNavView addSubview:self.previewBtn];
+    if ([BKImagePickerShareManager sharedManager].imagePickerModel.isHaveOriginal) {
+        [self.bottomNavView addSubview:self.originalBtn];
+    }
+    [self.bottomNavView addSubview:self.sendBtn];
+}
+
+/**
+ 更新底部按钮状态
+ */
+-(void)refreshBottomNavBtnState
+{
+    if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] <= 0) {
+        [self.previewBtn setTitleColor:BKIP_ImagePicker_SendTitleNormalColor forState:UIControlStateNormal];
+        
+        [self.sendBtn setTitleColor:BKIP_ImagePicker_SendTitleNormalColor forState:UIControlStateNormal];
+        [self.sendBtn setBackgroundColor:BKIP_ImagePicker_SendNormalBackgroundColor];
+        [self.sendBtn setTitle:@"确认" forState:UIControlStateNormal];
+    }else {
+        [self.previewBtn setTitleColor:BKIP_ImagePicker_SendHighlightedBackgroundColor forState:UIControlStateNormal];
+        
+        [self.sendBtn setTitleColor:BKIP_ImagePicker_SendTitleHighlightedColor forState:UIControlStateNormal];
+        [self.sendBtn setBackgroundColor:BKIP_ImagePicker_SendHighlightedBackgroundColor];
+        [self.sendBtn setTitle:[NSString stringWithFormat:@"确认(%ld)",[[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count]] forState:UIControlStateNormal];
+    }
+}
+
+#pragma mark - 预览按钮
+
+-(UIButton*)previewBtn
+{
+    if (!_previewBtn) {
+        _previewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _previewBtn.frame = CGRectMake(0, 0, self.view.bk_width/6, BKIP_get_system_tabbar_ui_height());
+        [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
+        [_previewBtn setTitleColor:BKIP_ImagePicker_SendTitleNormalColor forState:UIControlStateNormal];
+        _previewBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [_previewBtn addTarget:self action:@selector(previewBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _previewBtn;
+}
+
+-(void)previewBtnClick:(UIButton*)button
+{
+    if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] == 0) {
+        return;
+    }
+    
+    BKImagePickerImageModel * model = [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray lastObject];
+    __block BOOL isHaveFlag = NO;
+    __block NSInteger item = 0;
+    [self.assetListArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.fileName isEqualToString:model.fileName]) {
+            item = idx;
+            isHaveFlag = YES;
+            *stop = YES;
+        }
+    }];
+    
+    NSIndexPath * indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+    
+    if (!isHaveFlag) {
+        [self previewWithCell:nil imageListArray:[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray tapModel:[[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray lastObject]];
+    }else{
+        BKIPImagePickerCollectionViewCell * cell = (BKIPImagePickerCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        if (!cell) {
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                BKIPImagePickerCollectionViewCell * cell = (BKIPImagePickerCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+                [self previewWithCell:cell imageListArray:[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray tapModel:[[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray lastObject]];
+            });
+        }else{
+            [self previewWithCell:cell imageListArray:[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray tapModel:[[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray lastObject]];
+        }
+    }
+}
+
+#pragma mark - 原图按钮
+
+-(BKIPImagePickerOriginalButton*)originalBtn
+{
+    if (!_originalBtn) {
+        _originalBtn = [[BKIPImagePickerOriginalButton alloc] initWithFrame:CGRectMake(self.view.bk_width/6, 0, self.view.bk_width/7*3, BKIP_get_system_tabbar_ui_height())];
+        [_originalBtn addTarget:self action:@selector(originalBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [self calculataImageSize];
+    }
+    return _originalBtn;
+}
+
+-(void)originalBtnClick
+{
+    [BKImagePickerShareManager sharedManager].imagePickerModel.isOriginal = ![BKImagePickerShareManager sharedManager].imagePickerModel.isOriginal;
+    
+    [self calculataImageSize];
+}
+
+#pragma mark - 计算选中图片的大小
+
+-(void)calculataImageSize
+{
+    if ([BKImagePickerShareManager sharedManager].imagePickerModel.isOriginal) {
+        
+        [_originalBtn setTitleColor:BKIP_ImagePicker_SendHighlightedBackgroundColor];
+        _originalBtn.selected = YES;
+        
+        __block double allSize = 0.0;
+        __block BOOL isContainsLoading = NO;
+        [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            allSize = allSize + obj.originalFileSize;
+            if (obj.loadingProgress != 1) {
+                isContainsLoading = YES;
+                *stop = YES;
+            }
+        }];
+        
+        if (isContainsLoading) {
+            [_originalBtn setTitle:@"原图(计算中)"];
+        }else{
+            if (allSize>1024) {
+                allSize = allSize / 1024;
+                if (allSize > 1024) {
+                    allSize = allSize / 1024;
+                    [_originalBtn setTitle:[NSString stringWithFormat:@"原图(%.1fT)",allSize]];
+                }else{
+                    [_originalBtn setTitle:[NSString stringWithFormat:@"原图(%.1fG)",allSize]];
+                }
+            }else{
+                [_originalBtn setTitle:[NSString stringWithFormat:@"原图(%.1fM)",allSize]];
+            }
+        }
+        
+    }else{
+        [_originalBtn setTitleColor:BKIP_ImagePicker_SendTitleNormalColor];
+        _originalBtn.selected = NO;
+        [_originalBtn setTitle:@"原图"];
+    }
+}
+
+#pragma mark - 发送按钮
+
+-(UIButton*)sendBtn
+{
+    if (!_sendBtn) {
+        _sendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _sendBtn.frame = CGRectMake(self.view.bk_width/5*4, 6, self.view.bk_width/5-6, 37);
+        [_sendBtn setTitle:@"确认" forState:UIControlStateNormal];
+        [_sendBtn setTitleColor:BKIP_ImagePicker_SendTitleNormalColor forState:UIControlStateNormal];
+        [_sendBtn setBackgroundColor:BKIP_ImagePicker_SendNormalBackgroundColor];
+        _sendBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _sendBtn.layer.cornerRadius = 4;
+        _sendBtn.clipsToBounds = YES;
+        [_sendBtn addTarget:self action:@selector(sendBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sendBtn;
+}
+
+-(void)sendBtnClick:(UIButton*)button
+{
+    if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] == 0) {
+        BKIP_showMessage(BKPleaseSelectImageRemind);
+        return;
+    }
+    
+    __block BOOL isContainsLoading = NO;
+    [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if (obj.loadingProgress != 1) {
+            isContainsLoading = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isContainsLoading == YES) {
+        BKIP_showMessage(BKSelectImageDownloadingRemind);
+        return;
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBKIPFinishSelectImageNotification object:nil userInfo:nil];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -272,6 +443,9 @@
         model.coverImage = coverImage;
         [weakSelf.assetListArray replaceObjectAtIndex:currentIndexPath.item withObject:model];
     }];
+    [cell setClickSelectBtnCallBack:^(BKImagePickerImageModel * _Nonnull model, NSIndexPath * _Nonnull currentIndexPath) {
+        [weakSelf clickSelectImageAction:model currentIndexPath:currentIndexPath];
+    }];
     
     BKImagePickerImageModel * model = self.assetListArray[indexPath.item];
     [cell setModel:model indexPath:indexPath selectIndex:0];
@@ -318,12 +492,24 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//    BKImageModel * model = self.listArray[indexPath.item];
-//
+    BKImagePickerImageModel * model = self.assetListArray[indexPath.item];
+
+    BKIPImagePickerCollectionViewCell * cell = (BKIPImagePickerCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+    if (!cell) {
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            BKIPImagePickerCollectionViewCell * cell = (BKIPImagePickerCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+            [self previewWithCell:cell imageListArray:self.assetListArray tapModel:model];
+        });
+    }else{
+        [self previewWithCell:cell imageListArray:self.assetListArray tapModel:model];
+    }
+    
+    
 //    if (model.asset.mediaType == PHAssetMediaTypeImage) {
-//
+
 //        //当裁剪比例不为0时 进入裁剪状态
-//        if ([BKImagePicker sharedManager].imageManageModel.clipSize_width_height_ratio != 0) {
+//        if ([BKImagePickerShareManager sharedManager].imagePickerModel.clipSize_width_height_ratio != 0) {
 //
 //            [[BKImagePicker sharedManager] getOriginalImageWithAsset:model.asset complete:^(UIImage *originalImage) {
 //                BKEditImageViewController * vc = [[BKEditImageViewController alloc] init];
@@ -332,22 +518,13 @@
 //                [self.navigationController pushViewController:vc animated:YES];
 //            }];
 //
-//        }else{
-//            BKImagePickerCollectionViewCell * cell = (BKImagePickerCollectionViewCell*)[self.albumCollectionView cellForItemAtIndexPath:indexPath];
-//            if (!cell) {
-//                [self.albumCollectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:YES];
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    BKImagePickerCollectionViewCell * cell = (BKImagePickerCollectionViewCell*)[self.albumCollectionView cellForItemAtIndexPath:indexPath];
-//                    [self previewWithCell:cell imageListArray:self.imageListArray tapModel:model];
-//                });
-//            }else{
-//                [self previewWithCell:cell imageListArray:self.imageListArray tapModel:model];
-//            }
+//        }else {
+            
 //        }
-//
-//    }else{
-//        if ([[BKImagePicker sharedManager].imageManageModel.selectImageArray count] > 0) {
-//            [self.view bk_showRemind:BKCanNotSelectBothTheImageAndVideoRemind];
+
+//    }else {
+//        if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] > 0) {
+//            BKIP_showMessage(BKCanNotSelectBothTheImageAndVideoRemind);
 //            return;
 //        }
 //
@@ -357,18 +534,174 @@
 //    }
 }
 
-//-(void)previewWithCell:(BKImagePickerCollectionViewCell*)cell imageListArray:(NSArray*)imageListArray tapModel:(BKImageModel*)tapModel
-//{
-//    if (!cell.photoImageView.image && cell) {
-//        return;
-//    }
-//
-//    BKImagePreviewViewController * vc = [[BKImagePreviewViewController alloc]init];
-//    vc.delegate = self;
-//    vc.tapImageView = cell.photoImageView;
-//    vc.imageListArray = [imageListArray copy];
-//    vc.tapImageModel = tapModel;
-//    [vc showInNav:self.navigationController];
-//}
+-(void)previewWithCell:(BKIPImagePickerCollectionViewCell*)cell imageListArray:(NSArray*)imageListArray tapModel:(BKImagePickerImageModel*)tapModel
+{
+    if (!cell.displayImageView.image && cell) {
+        return;
+    }
+
+    BKIPPreviewViewController * vc = [[BKIPPreviewViewController alloc]init];
+    vc.delegate = self;
+    vc.tapImageView = cell.displayImageView;
+    vc.imageListArray = [imageListArray copy];
+    vc.tapImageModel = tapModel;
+    [vc showInNav:self.navigationController];
+}
+
+#pragma mark - BKIPPreviewViewControllerDelegate
+
+-(void)refreshLookLocationActionWithImageModel:(BKImagePickerImageModel*)model
+{
+    __block BOOL isHaveFlag = NO;
+    __block NSInteger item = 0;
+    [self.assetListArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.fileName isEqualToString:model.fileName]) {
+            item = idx;
+            isHaveFlag = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isHaveFlag) {
+        NSIndexPath * indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+        
+        BKIPImagePickerCollectionViewCell * cell = (BKIPImagePickerCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:indexPath];
+        if (!cell) {
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredVertically animated:NO];
+        }
+    }
+}
+
+-(CGRect)getFrameOfCurrentImageInListVCWithImageModel:(BKImagePickerImageModel*)model
+{
+    __block BOOL isHaveFlag = NO;
+    __block NSInteger item = 0;
+    [self.assetListArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.fileName isEqualToString:model.fileName]) {
+            item = idx;
+            isHaveFlag = YES;
+            *stop = YES;
+        }
+    }];
+    
+    if (isHaveFlag) {
+        NSIndexPath * indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+        CGRect in_list_rect = [self.collectionView layoutAttributesForItemAtIndexPath:indexPath].frame;
+        CGRect in_view_rect = [self.collectionView convertRect:in_list_rect toView:self.view];
+        return in_view_rect;
+    }else{
+        return CGRectZero;
+    }
+}
+
+#pragma mark - 选中图片/取消选中图片
+
+-(void)clickSelectImageAction:(BKImagePickerImageModel*)imageModel currentIndexPath:(NSIndexPath*)currentIndexPath
+{
+    __block BOOL isHave = NO;
+    __block NSInteger currentIndex;
+    [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray enumerateObjectsUsingBlock:^(BKImagePickerImageModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.fileName isEqualToString:imageModel.fileName]) {
+            currentIndex = idx;
+            isHave = YES;
+        }
+        
+        NSArray * visibleCellArr = [self.collectionView visibleCells];
+        for (int i = 0; i < [visibleCellArr count]; i++) {
+            BKIPImagePickerCollectionViewCell * cell = visibleCellArr[i];
+            if ([obj.fileName isEqualToString:cell.model.fileName]) {
+                if (isHave) {
+                    if (currentIndex == idx) {
+                        [cell.selectBtn cancelSelect];
+                    }else{
+                        [cell.selectBtn refreshSelectClickNum:idx];
+                    }
+                }else{
+                    [cell.selectBtn refreshSelectClickNum:idx+1];
+                }
+                break;
+            }
+        }
+    }];
+    
+    BKIPImagePickerCollectionViewCell * currentSelectCell = nil;
+    NSArray * currentDisplayCellArr = [self.collectionView visibleCells];
+    for (int i = 0; i < [currentDisplayCellArr count]; i++) {
+        BKIPImagePickerCollectionViewCell * cell = currentDisplayCellArr[i];
+        if ([imageModel.fileName isEqualToString:cell.model.fileName]) {
+            currentSelectCell = cell;
+            break;
+        }
+    }
+    
+    if (isHave) {
+        [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray removeObjectAtIndex:currentIndex];
+    }else {
+        if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] >= [BKImagePickerShareManager sharedManager].imagePickerModel.maxSelect) {
+            BKIP_showMessage([NSString stringWithFormat:@"最多只能选择%ld张照片", [BKImagePickerShareManager sharedManager].imagePickerModel.maxSelect]);
+            return;
+        }
+        
+        [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray addObject:imageModel];
+        [currentSelectCell.selectBtn selectClickNum:[[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count]];
+        
+        if (imageModel.loadingProgress != 1) {
+            if (imageModel.photoType == BKIPSelectTypeVideo) {
+                [[BKImagePickerShareManager sharedManager] getVideoDataWithAsset:imageModel.asset progressHandler:^(double progress, NSError * _Nonnull error, PHImageRequestID imageRequestID) {
+                    if (error) {
+                        imageModel.loadingProgress = 0;
+                    }else {
+                        imageModel.loadingProgress = progress;
+                    }
+                    [[BKImagePickerShareManager sharedManager] updateSelectedImageModel:imageModel];
+                } complete:^(AVPlayerItem * _Nonnull playerItem, PHImageRequestID imageRequestID) {
+                    if (playerItem) {
+                        AVURLAsset * avUrlAsset = (AVURLAsset*)playerItem.asset;
+                        imageModel.loadingProgress = 1;
+                        imageModel.originalFileSize = [[NSData dataWithContentsOfURL:avUrlAsset.URL] length]/1024/1024.0f;
+                        imageModel.url = avUrlAsset.URL;
+                        
+                        [self calculataImageSize];
+                        [self refreshBottomNavBtnState];
+                    }else {
+                        imageModel.loadingProgress = 0;
+                        BKIP_showMessage(BKVideoDownloadFailedRemind);
+                        //删除选中的自己
+                        [self clickSelectImageAction:imageModel currentIndexPath:currentIndexPath];
+                    }
+                    [[BKImagePickerShareManager sharedManager] updateSelectedImageModel:imageModel];
+                }];
+            }else {
+                [[BKImagePickerShareManager sharedManager] getOriginalImageDataWithAsset:imageModel.asset progressHandler:^(double progress, NSError *error, PHImageRequestID imageRequestID) {
+                    if (error) {
+                        imageModel.loadingProgress = 0;
+                        return;
+                    }
+                    imageModel.loadingProgress = progress;
+                    [[BKImagePickerShareManager sharedManager] updateSelectedImageModel:imageModel];
+                } complete:^(NSData *originalImageData, NSURL *url, PHImageRequestID imageRequestID) {
+                    if (originalImageData) {
+                        imageModel.thumbImageData = [[BKImagePickerShareManager sharedManager] compressImageData:originalImageData];
+                        imageModel.originalImageData = originalImageData;
+                        imageModel.loadingProgress = 1;
+                        imageModel.originalFileSize = (double)originalImageData.length/1024/1024.0f;
+                        imageModel.url = url;
+                        
+                        [self calculataImageSize];
+                        [self refreshBottomNavBtnState];
+                    }else {
+                        imageModel.loadingProgress = 0;
+                        BKIP_showMessage(BKOriginalImageDownloadFailedRemind);
+                        //删除选中的自己
+                        [self clickSelectImageAction:imageModel currentIndexPath:currentIndexPath];
+                    }
+                    [[BKImagePickerShareManager sharedManager] updateSelectedImageModel:imageModel];
+                }];
+            }
+        }
+    }
+    [self calculataImageSize];
+    [self refreshBottomNavBtnState];
+}
 
 @end
