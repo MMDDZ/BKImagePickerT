@@ -95,34 +95,19 @@ static BKImagePicker * sharedManager = nil;
             imageVC.title = collection.localizedTitle;
             
             self.observer = [[NSNotificationCenter defaultCenter] addObserverForName:kBKIPFinishSelectImageNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
-                
-                if ([[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray count] == 1) {
-                    BKImagePickerImageModel * model = [[BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray firstObject];
-                    if (model.photoType != BKIPSelectTypeVideo) {
-                        if (complete) {
+                for (BKImagePickerImageModel * model in [BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray) {
+                    if (complete) {
+                        if (model.photoType != BKIPSelectTypeVideo) {
                             if ([BKImagePickerShareManager sharedManager].imagePickerModel.isOriginal) {
                                 complete(model.asset, [UIImage imageWithData:model.originalImageData], model.originalImageData, model.url, model.photoType);
-                            }else{
+                            }else {
                                 complete(model.asset, [UIImage imageWithData:model.thumbImageData], model.thumbImageData, model.url, model.photoType);
                             }
-                        }
-                    }else {
-                        if (complete) {
-                            complete(model.asset, [UIImage imageWithData:model.originalImageData], [NSData dataWithContentsOfURL:model.url], model.url, model.photoType);
-                        }
-                    }
-                }else{
-                    for (BKImagePickerImageModel * model in [BKImagePickerShareManager sharedManager].imagePickerModel.selectImageArray) {
-                        if (complete) {
-                            if ([BKImagePickerShareManager sharedManager].imagePickerModel.isOriginal) {
-                                complete(model.asset, [UIImage imageWithData:model.originalImageData], model.originalImageData, model.url, model.photoType);
-                            }else{
-                                complete(model.asset, [UIImage imageWithData:model.thumbImageData], model.thumbImageData, model.url, model.photoType);
-                            }
+                        }else {
+                            complete(model.asset, [[BKImagePickerShareManager sharedManager] getFirstFrameWithVideoURLAsset:model.avURLAsset], [NSData dataWithContentsOfURL:model.url], model.url, model.photoType);
                         }
                     }
                 }
-                
                 [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
             }];
             

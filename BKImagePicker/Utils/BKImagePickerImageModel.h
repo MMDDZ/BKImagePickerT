@@ -14,42 +14,26 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BKImagePickerImageModel : NSObject
 
-/**
- PHAsset
- */
+/// PHAsset
 @property (nonatomic,strong) PHAsset * asset;
-/**
- 图片名称
- */
+/// 图片名称
 @property (nonatomic,copy) NSString * fileName;
-/**
- 图片类型
- */
+/// 图片类型
 @property (nonatomic,assign) BKIPSelectType photoType;
-/**
- 封面图
- */
+/// 封面图
 @property (nonatomic,strong) UIImage * coverImage;
-/**
- 缩略图data
- */
+/// 缩略图data
 @property (nonatomic,strong) NSData * thumbImageData;
-/**
- 原图data (当photoType == BKIPSelectTypeVideo时 为封面图data)
- */
+/// 原图data (当photoType == BKIPSelectTypeVideo时 为封面图data)
 @property (nonatomic,strong) NSData * originalImageData;
-/**
- 加载的进度0~1 0代表未加载或者加载失败 1代表加载完成 其余代表加载中
- */
+/// 加载的进度0~1 0代表未加载或者加载失败 1代表加载完成 其余代表加载中
 @property (nonatomic,assign) CGFloat loadingProgress;
-/**
- 原文件大小
- */
+/// 原文件大小
 @property (nonatomic,assign) double originalFileSize;
-/**
- URL
- */
+/// URL
 @property (nonatomic,strong) NSURL * url;
+/// 视频资源
+@property (nonatomic,strong) AVURLAsset * avURLAsset;
 
 @end
 

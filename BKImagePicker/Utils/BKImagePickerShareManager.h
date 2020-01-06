@@ -119,6 +119,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)saveImage:(UIImage*)image complete:(void (^)(PHAsset * asset, BOOL success))complete;
 
+#pragma mark - 获取视频第一帧
+
+/// 获取视频的第一帧
+/// @param videoURLAsset 视频url资源
+-(UIImage*)getFirstFrameWithVideoURLAsset:(AVURLAsset*)videoURLAsset;
+
 @end
 
 NS_ASSUME_NONNULL_END

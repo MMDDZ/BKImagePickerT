@@ -99,7 +99,7 @@ NS_INLINE CGFloat isIPhoneXSeries() {
     switch (indexPath.item) {
         case 0:
         {
-            [[BKImagePicker sharedManager] showImageAlbumWithDisplayType:BKIPDisplayTypeDefault maxSelect:1 isHaveOriginal:YES complete:^(PHAsset * _Nonnull asset, UIImage * _Nonnull image, NSData * _Nonnull data, NSURL * _Nonnull url, BKIPSelectType selectType) {
+            [[BKImagePicker sharedManager] showImageAlbumWithDisplayType:BKIPDisplayTypeDefault maxSelect:6 isHaveOriginal:YES complete:^(PHAsset * _Nonnull asset, UIImage * _Nonnull image, NSData * _Nonnull data, NSURL * _Nonnull url, BKIPSelectType selectType) {
                 NSLog(@"asset:%@, image:%@, dataLength:%ld, url:%@, selectType:%ld", asset, image, [data length], url, selectType);
             }];
         }

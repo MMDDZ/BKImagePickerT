@@ -657,6 +657,7 @@
                 } complete:^(AVPlayerItem * _Nonnull playerItem, PHImageRequestID imageRequestID) {
                     if (playerItem) {
                         AVURLAsset * avUrlAsset = (AVURLAsset*)playerItem.asset;
+                        imageModel.avURLAsset = avUrlAsset;
                         imageModel.loadingProgress = 1;
                         imageModel.originalFileSize = [[NSData dataWithContentsOfURL:avUrlAsset.URL] length]/1024/1024.0f;
                         imageModel.url = avUrlAsset.URL;

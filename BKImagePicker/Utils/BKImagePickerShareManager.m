@@ -546,4 +546,16 @@ static BKImagePickerShareManager * sharedManager = nil;
     return [PHAssetCollection fetchAssetCollectionsWithLocalIdentifiers:@[collectionId] options:nil].firstObject;
 }
 
+#pragma mark - 获取视频第一帧
+
+/// 获取视频的第一帧
+-(UIImage*)getFirstFrameWithVideoURLAsset:(AVURLAsset*)videoURLAsset
+{
+    AVAssetImageGenerator * generator = [AVAssetImageGenerator assetImageGeneratorWithAsset:videoURLAsset];
+    generator.appliesPreferredTrackTransform = YES;
+    NSError * error = nil;
+    CGImageRef img = [generator copyCGImageAtTime:CMTimeMake(0, 10) actualTime:NULL error:&error];
+    return [UIImage imageWithCGImage:img];
+}
+
 @end
