@@ -9,7 +9,7 @@
 #import "BKImagePickerBaseViewController.h"
 #import "BKImagePickerHeader.h"
 
-@interface BKImagePickerBaseViewController ()
+@interface BKImagePickerBaseViewController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic,assign) CGFloat leftNavSpace;
 @property (nonatomic,assign) CGFloat rightNavSpace;
@@ -32,12 +32,16 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     self.navigationController.navigationBarHidden = YES;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
 -(void)viewWillDisappear:(BOOL)animated

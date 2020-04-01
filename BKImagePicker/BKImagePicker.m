@@ -111,9 +111,8 @@ static BKImagePicker * sharedManager = nil;
                 [[NSNotificationCenter defaultCenter] removeObserver:self.observer];
             }];
             
-            BKImagePickerNavigationController * nav = [[BKImagePickerNavigationController alloc] initWithRootViewController:imageClassVC];
+            UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:imageClassVC];
             [nav pushViewController:imageVC animated:NO];
-            nav.popVC = imageClassVC;
             [lastVC presentViewController:nav animated:YES completion:nil];
         }
     } alertHandler:nil];

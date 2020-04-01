@@ -178,7 +178,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     self.nav.delegate = self;
 }
 

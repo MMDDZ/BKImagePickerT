@@ -11,7 +11,7 @@
 
 @interface BKIPPreviewInteractiveTransition()<UIGestureRecognizerDelegate>
 
-@property (nonatomic,weak) BKIPPreviewViewController * vc;//添加手势的vc
+@property (nonatomic,weak) BKIPPreviewViewController * displayVC;//添加手势的vc
 @property (nonatomic,assign) CGFloat startZoomScale;//图片起始在scrollview中缩放大小
 @property (nonatomic,assign) CGPoint startContentOffset;//图片起始在scrollview中的偏移量
 @property (nonatomic,assign) CGRect startImageViewRect;//图片起始在scrollview中的大小
@@ -29,22 +29,19 @@
 
 #pragma mark - 手势
 
-- (void)addPanGestureForViewController:(BKIPPreviewViewController *)viewController
+-(void)addPanGestureForViewController:(BKIPPreviewViewController *)viewController
 {
-    self.vc = viewController;
+    self.displayVC = viewController;
     
-    _panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
-    _panGesture.maximumNumberOfTouches = 1;
-    _panGesture.delegate = self;
-    [viewController.view addGestureRecognizer:_panGesture];
+    self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    self.panGesture.maximumNumberOfTouches = 1;
+    self.panGesture.delegate = self;
+    [viewController.view addGestureRecognizer:self.panGesture];
 }
 
-/**
- *  手势过渡的过程
- */
-- (void)panGesture:(UIPanGestureRecognizer *)panGesture
+-(void)panGesture:(UIPanGestureRecognizer *)panGesture
 {
-    CGPoint nowPoint = [panGesture locationInView:_vc.view];
+    CGPoint nowPoint = [panGesture locationInView:self.displayVC.view];
     
     CGFloat percentage = (nowPoint.y - _startPoint.y) / [UIScreen mainScreen].bounds.size.height;
     if (percentage > 1) {
@@ -53,7 +50,7 @@
         percentage = -0.5;
     }
     
-    UIViewController * lastVC = [_vc.navigationController viewControllers][[[_vc.navigationController viewControllers] count] - 2];
+    UIViewController * lastVC = [self.displayVC.navigationController viewControllers][[[self.displayVC.navigationController viewControllers] count] - 2];
     
     switch (panGesture.state) {
         case UIGestureRecognizerStateBegan:
@@ -72,18 +69,18 @@
                 return;
             }
             
-            [[_vc.view subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [[self.displayVC.view subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                 [obj setHidden:YES];
             }];
             
             if (_isNavHidden) {
-                self.vc.statusBarHidden = NO;
+                self.displayVC.statusBarHidden = NO;
             }
             
             self.original_lastVCSupperView = [lastVC.view superview];
-            [[_vc.view superview] insertSubview:lastVC.view belowSubview:_vc.view];
+            [[self.displayVC.view superview] insertSubview:lastVC.view belowSubview:self.displayVC.view];
             
-            _startPanRect = [_supperScrollView convertRect:_startImageView.frame toView:self.vc.view];
+            _startPanRect = [_supperScrollView convertRect:_startImageView.frame toView:self.displayVC.view];
             
             _supperScrollView.contentOffset = CGPointZero;
             _supperScrollView.zoomScale = 1;
@@ -91,7 +88,7 @@
             
             _startImageView.frame = _startPanRect;
             
-            [_vc.view addSubview:_startImageView];
+            [self.displayVC.view addSubview:_startImageView];
         }
             break;
         case UIGestureRecognizerStateChanged:
@@ -99,11 +96,11 @@
             CGPoint translation = [panGesture translationInView:panGesture.view];
             CGFloat newY = _startImageView.bk_y + translation.y;
             if (newY <= 0) {
-                _vc.view.alpha = 1;
+                self.displayVC.view.alpha = 1;
                 _startImageView.transform = CGAffineTransformMakeScale(1, 1);
                 _startImageView.bk_y = _startImageView.bk_y + translation.y/3.f;
             }else if (newY > 0 && newY <= _startPanRect.origin.y) {
-                _vc.view.alpha = 1;
+                self.displayVC.view.alpha = 1;
                 _startImageView.transform = CGAffineTransformMakeScale(1, 1);
                 _startImageView.bk_y = newY;
             }else {
@@ -113,10 +110,10 @@
                     self.changeScale = 1 - fabs(0.7*percentage);
                 }
                 
-                if (_vc.navigationController) {
-                    _vc.navigationController.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+                if (self.displayVC.navigationController) {
+                    self.displayVC.navigationController.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
                 }
-                _vc.view.backgroundColor = [UIColor colorWithWhite:0 alpha:self.changeScale];
+                self.displayVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:self.changeScale];
                 
                 _startImageView.transform = CGAffineTransformMakeScale(self.changeScale, self.changeScale);
                 _startImageView.bk_y = newY;
@@ -128,7 +125,7 @@
         {
             if (percentage > 0.2) {
                 [self.original_lastVCSupperView addSubview:lastVC.view];
-                [_vc.navigationController popViewControllerAnimated:YES];
+                [self.displayVC.navigationController popViewControllerAnimated:YES];
             }else{
                 [self cancelRecognizerMethodWithPercentage:percentage lastVC:lastVC];
             }
@@ -162,10 +159,10 @@
         self.startImageView.transform = CGAffineTransformIdentity;
         self.startImageView.frame = self.startPanRect;
         
-        if (self.vc.navigationController) {
-            self.vc.navigationController.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+        if (self.displayVC.navigationController) {
+            self.displayVC.navigationController.view.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
         }
-        self.vc.view.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
+        self.displayVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:1];
         
     } completion:^(BOOL finished) {
         
@@ -177,20 +174,20 @@
         [lastVC.view removeFromSuperview];
         [self.original_lastVCSupperView addSubview:lastVC.view];
         
-        [[self.vc.view subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [[self.displayVC.view subviews] enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj setHidden:NO];
         }];
         if (self.isNavHidden) {
-            self.vc.statusBarHidden = YES;
+            self.displayVC.statusBarHidden = YES;
         }else{
-            self.vc.statusBarHidden = NO;
+            self.displayVC.statusBarHidden = NO;
         }
     }];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     if (gestureRecognizer == _panGesture) {
         CGPoint point = [_panGesture velocityInView:_panGesture.view];
